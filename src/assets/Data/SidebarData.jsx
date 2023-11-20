@@ -22,18 +22,18 @@ export const SidebarData = [
         icon: faBraille,
     },
     {
-        title: "Manage Job Applications",
-        href: "mjobapplication",
-        icon: faBookAtlas,
+        title: "Manage Bloods",
+        href: "mbloodsrequest",
+        icon: faBookmark,
     },
     {
-        title: "Manage Orders",
-        href: "morders",
+        title: "Manage Volunteers",
+        href: "mvolunteersrequest",
         icon: faListCheck,
     },
     {
-        title: "Manage Bookings",
-        href: "mbookings",
-        icon: faBookmark,
+        title: "Manage Job Applications",
+        href: "mjobapplication",
+        icon: faBookAtlas,
     },
 ];

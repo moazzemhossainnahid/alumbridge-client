@@ -169,14 +169,14 @@ const DBCards = () => {
           </div>
         </div>
 
-        {/* Total Blood Request */}
+        {/* Total Bloods Request */}
         <div className="">
           <div className="flex items-center justify-between bg-[#572194b9] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {bloodRequest?.length}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Blood Request</h3>
+              <h3 className="text-md font-bold text-white">Total Bloods Request</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -186,7 +186,7 @@ const DBCards = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/mbloodrequest")}
+            onClick={() => navigate("/cpanel/mbloodsrequest")}
             className="bg-[#572194ea] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">
@@ -196,14 +196,14 @@ const DBCards = () => {
           </div>
         </div>
 
-        {/* Total Volunteer Request */}
+        {/* Total Volunteers Request */}
         <div className="">
           <div className="flex items-center justify-between bg-[#4040f5] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {volunteerrequest?.length}{" "}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Volunteer Request</h3>
+              <h3 className="text-md font-bold text-white">Total Volunteers Request</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -213,7 +213,7 @@ const DBCards = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/mvolunteerrequest")}
+            onClick={() => navigate("/cpanel/mvolunteersrequest")}
             className="bg-[#2c2c9c] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">
@@ -223,7 +223,7 @@ const DBCards = () => {
           </div>
         </div>
 
-        {/* Total Booking */}
+        {/* Total Job Applications */}
         <div className="">
           <div className="flex items-center justify-between bg-[#ad5530] p-3 rounded-t-xl">
             <div className="">

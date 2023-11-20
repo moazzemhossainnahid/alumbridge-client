@@ -54,11 +54,11 @@ function App() {
               <Route index element={<AdDashboard />} />
               <Route path="addashboard" element={<AdDashboard />} />
               <Route path="musers" element={<ManageUsers />} />
-              <Route path="mblogs" element={<ManageBlogs />} />
               <Route path="mjobs" element={<ManageJobs />} />
-              <Route path="morders" element={<ManageOrders />} />
-              <Route path="mstafs" element={<ManageStafs />} />
-              <Route path="mbookings" element={<ManageBookings />} />
+              <Route path="mblogs" element={<ManageBlogs />} />
+              <Route path="mjobapplications" element={<ManageStafs />} />
+              <Route path="mbloods" element={<ManageOrders />} />
+              <Route path="mvolunteers" element={<ManageBookings />} />
             </Route>
           </Routes>
         </div>

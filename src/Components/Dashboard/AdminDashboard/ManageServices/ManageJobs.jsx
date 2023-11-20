@@ -33,6 +33,7 @@ const ManageJobs = () => {
   const handleAddJob = async (data) => {
 
     const job = {
+      jobTitle: data.jobTitle,
       companyName: data.companyName,
       positionName: data.positionName,
       vacancy: data.vacancy,
@@ -161,37 +162,46 @@ const ManageJobs = () => {
             className="py-3"
           >
             <input
+              {...register("jobTitle")}
+              type="text"
+              placeholder="Enter Job Title"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
+            />
+            <div className="w-full flex flex-col md:flex-row gap-3">
+
+            <input
               {...register("companyName")}
               type="text"
-              placeholder="Enter Company name"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              placeholder="Enter Company Name"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("positionName")}
               type="text"
               placeholder="Enter Position Name"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
+            </div>
             <input
               {...register("vacancy")}
               type="number"
               placeholder="Enter Job Vacancy"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("skills")}
               type="text"
               placeholder="Enter Job skills"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <textarea
               {...register("description")}
               type="text"
               placeholder="Enter Job Description"
-              className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full h-20 block mx-auto"
             />
             <input
-              className="btn px-7 btn-warning my-5 block mx-auto"
+              className="btn px-7 btn-warning mt-5 block mx-auto"
               type="submit"
               value="Add Job"
             />

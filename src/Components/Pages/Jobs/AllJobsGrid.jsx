@@ -8,10 +8,8 @@ const AllJobsGrid = ({ job }) => {
   return (
     <div onClick={() => navigate(`/jobs/${job?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
-        <div>
-          <img src={job?.image} className="w-full h-60" />
-        </div>
         <div className="bg-white">
+          <h3 className="">{job?.jobTitle}</h3>
           <div className="flex items-center justify-between px-4 pt-4">
             <div>
               <svg
@@ -39,7 +37,7 @@ const AllJobsGrid = ({ job }) => {
               <h2 className="text-lg font-semibold">{job?.name}</h2>
             </div>
             <p className="text-xs text-gray-600 mt-2">
-              {job?.description.slice(0, 150)}
+              {job?.description?.slice(0, 150)}
             </p>
             <div className="flex justify-between items-center mt-4">
               <div>
@@ -55,7 +53,7 @@ const AllJobsGrid = ({ job }) => {
             </div>
             <div className="flex items-center justify-between py-4">
               <h2 className="text-indigo-700 text-xs font-semibold">
-                {job?.sku.slice(0, 17)}
+                {job?.sku?.slice(0, 17)}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
               <span className="pr-1">&#2547;</span>

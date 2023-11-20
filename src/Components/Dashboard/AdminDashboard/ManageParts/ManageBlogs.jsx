@@ -99,16 +99,16 @@ const ManageBlogs = () => {
                   Index
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                  Image
+                  Banner
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                  Name
+                  Title
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                   Category
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                  Price
+                  Author
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                   Action
@@ -181,34 +181,34 @@ const ManageBlogs = () => {
               {...register("title")}
               type="text"
               placeholder="Enter Blog Title"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("category")}
               type="text"
               placeholder="Enter Blog Category"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("author")}
               type="text"
               placeholder="Enter Blog Author"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <textarea
               {...register("description")}
               type="text"
               placeholder="Enter Blog Description"
-              className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
             />
             <input
               {...register("photoURL")}
               type="file"
               placeholder="Enter Your Image"
-              className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block max-w-xs"
+              className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block"
             />
             <input
-              className="btn px-7 btn-primary my-5 block mx-auto"
+              className="btn px-7 btn-primary mt-5 block mx-auto"
               type="submit"
               value="Add Blog"
             />

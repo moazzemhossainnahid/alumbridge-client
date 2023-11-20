@@ -22,7 +22,7 @@ const ManageBlogsRow = ({ blog, index, setDeleteBlog}) => {
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Category</span>
                 {category}
             </td>
-            <td className="w-full lg:w-auto font-bold text-green-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
+            <td className="w-full lg:w-auto font-bold text-gray-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Author</span>
                 {author}
             </td>

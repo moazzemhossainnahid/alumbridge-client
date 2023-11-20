@@ -10,11 +10,11 @@ const AllBlogsGrid = ({ blog }) => {
 
   useEffect(() => {
     const options = { day: 'numeric', month: 'short', year: 'numeric' };
-    const date = new Date(blog.createdAt);
+    const date = new Date(blog?.createdAt);
     const formattedDate = date.toLocaleDateString('en-US', options);
     setFormattedDate(formattedDate);
-  }, [blog.createdAt]);
-  
+  }, [blog?.createdAt]);
+
   return (
     <div onClick={() => navigate(`/blogs/${blog?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">

@@ -22,38 +22,37 @@ const SingleJobDetails = () => {
     }
   }, [jobs, id]);
 
-//   const handleAddService = async (data) => {
-//     const booking = {
-//       name: data.name,
-//       service: job.name,
-//       phone: data.phone,
-//       email: data.email,
-//       address: data.address,
-//       message: data.message,
-//     };
-    
-// console.log(booking);
+    const handleJobApplication = async (data) => {
+      const application = {
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        address: data.address,
+        message: data.message,
+      };
 
-//     // send to database
-//     fetch(`http://localhost:5000/api/v1/bookings`, {
-//       method: "POST",
-//       headers: {
-//         "content-type": "application/json",
-//         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-//       },
-//       body: JSON.stringify(booking),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         //   console.log(data);
-//         if (data?.status === "Successful") {
-//           toast.success("Appointment Booked Successfully");
-//           reset();
-//         } else {
-//           toast.error("Faild to Booked Appointment");
-//         }
-//       });
-//   };
+  console.log(application);
+
+      // send to database
+      fetch(`http://localhost:5000/api/v1/jobapplications`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(application),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          //   console.log(data);
+          if (data?.status === "Successful") {
+            toast.success("Applied Successfully");
+            reset();
+          } else {
+            toast.error("Faild to Apply");
+          }
+        });
+    };
 
   return (
     <div className="w-full">
@@ -71,35 +70,34 @@ const SingleJobDetails = () => {
                 Published {new Date(job.createdAt).toLocaleString()}
               </p>
               <h1 className="text-black pb-3 text-2xl md:text-4xl font-bold">
-                {job?.name}
+                {job?.jobTitle}
               </h1>
               <div className="blog-subCategory w-full flex justify-center">
-                <Chip label={job?.category} />
+                <Chip label={job?.companyName} />
               </div>
             </header>
-            <img className="py-5 mx-auto" src={job?.image} alt="cover" />
             <div className="space-y-4">
-              <h2 className="text-indigo-700 text-xs font-semibold">
-                {job?.sku.slice(0, 17)}
+              <h2 className="text-indigo-700 text-xl mt-7 font-semibold">
+                <span className="pr-3"> Position:</span>
+                {job?.positionName}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
-                <span className="pr-3"> Price:</span>
-                <span className="pr-1">&#2547;</span>
-                {job?.price}/=
+                <span className="pr-3"> Vacancy:</span>
+                {job?.vacancy}
               </h3>
             </div>
             <div className="">
-              <p className="blog-desc p-5 md:px-10">{job?.description}</p>
+              <p className="text-md p-5 md:px-10">{job?.description}</p>
             </div>
-            <div className="pt-7">
+            {/* <div className="pt-7">
               <label
-                for="bookAppointment"
+                for="applyJob"
                 className="w-2/3 md:w-2/5 btn btn-outline btn-secondary flex items-center justify-center mx-auto"
               >
-                Booked an Appointment{" "}
+                Apply{" "}
                 <span className="text-2xl -mt-1">&#8608;</span>
               </label>
-            </div>
+            </div> */}
           </div>
         ) : (
           <EmptyList />
@@ -107,20 +105,20 @@ const SingleJobDetails = () => {
       </div>
       <RelatedServices service={job} />
 
-      {/* <!-- The Book Appointment modal --> */}
+      {/* <!-- The Apply Job Modal --> */}
 
-      <input type="checkbox" id="bookAppointment" class="modal-toggle" />
+      <input type="checkbox" id="applyJob" class="modal-toggle" />
       <div class="modal">
         <div class="modal-box relative  bg-slate-300">
           <label
-            for="bookAppointment"
+            for="applyJob"
             class="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="text-lg font-bold">Insert Booking Information For <br /> /{job?.name}/</h3>
-          {/* <form
-            onSubmit={handleSubmit(handleAddService)}
+          <h3 class="text-lg font-bold">Insert Booking Information For <br /> /{job?.jobTitle}/</h3>
+          <form
+            onSubmit={handleSubmit(handleJobApplication)}
             action=""
             className="py-3"
           >
@@ -151,7 +149,7 @@ const SingleJobDetails = () => {
             <textarea
               {...register("message")}
               type="text"
-              placeholder="Enter About Service"
+              placeholder="Enter About Application"
               className="input bg-slate-100 my-2 input-ghost w-full h-24 block mx-auto max-w-xs"
             />
             <input
@@ -159,7 +157,7 @@ const SingleJobDetails = () => {
               type="submit"
               value="Send Data"
             />
-          </form> */}
+          </form>
         </div>
       </div>
     </div>

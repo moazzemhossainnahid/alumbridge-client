@@ -8,57 +8,26 @@ const AllJobsGrid = ({ job }) => {
   return (
     <div onClick={() => navigate(`/jobs/${job?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
-        <div className="bg-white">
-          <h3 className="">{job?.jobTitle}</h3>
+        <div className="bg-white p-3">
+          <h3 className="text-start text-xl font-bold">{job?.jobTitle}</h3>
           <div className="flex items-center justify-between px-4 pt-4">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-bookmark"
-                width={20}
-                height={20}
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#2c3e50"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2" />
-              </svg>
-            </div>
             <div className="bg-yellow-200 py-1.5 px-6 rounded-full">
-              <p className="text-xs text-gray-500">{job?.category}</p>
+            <h2 className="text-xs font-semibold">{job?.companyName}</h2>
             </div>
           </div>
           <div className="p-4">
-            <div className="w-full flex justify-start items-center">
-              <h2 className="text-lg font-semibold">{job?.name}</h2>
-            </div>
-            <p className="text-xs text-gray-600 mt-2">
-              {job?.description?.slice(0, 150)}
+            <p className="text-sm text-start text-gray-600">
+              {job?.description?.slice(0, 250)}
             </p>
-            <div className="flex justify-between items-center mt-4">
-              <div>
-                <p className="text-xs text-gray-600 px-2 bg-gray-200 py-1">
-                  12 months warranty
+            <div className="w-full mt-4">
+              <div className="space-y-3">
+                <p className="w-fit text-xs text-gray-600 px-2 bg-gray-200 py-1 font-semibold">
+                  Position: <span className="font-normal">{job?.positionName}</span>
+                </p>
+                <p className="w-fit text-xs text-gray-600 px-2 bg-gray-200 py-1 font-semibold">
+                  Vacancy: <span className="font-normal">{job?.vacancy}</span>
                 </p>
               </div>
-              <div className="">
-                <p className="text-xs text-gray-600 px-2 bg-gray-200 py-1">
-                  Complete box
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center justify-between py-4">
-              <h2 className="text-indigo-700 text-xs font-semibold">
-                {job?.sku?.slice(0, 17)}
-              </h2>
-              <h3 className="text-indigo-700 text-xl font-semibold">
-              <span className="pr-1">&#2547;</span>
-                {job?.price}
-              </h3>
             </div>
           </div>
         </div>

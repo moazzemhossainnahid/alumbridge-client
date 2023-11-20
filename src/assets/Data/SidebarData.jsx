@@ -22,8 +22,8 @@ export const SidebarData = [
         icon: faBraille,
     },
     {
-        title: "Manage Stafs",
-        href: "mstafs",
+        title: "Manage Job Applications",
+        href: "mjobapplication",
         icon: faBookAtlas,
     },
     {

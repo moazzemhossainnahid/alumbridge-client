@@ -18,7 +18,7 @@ const DBCards = () => {
   const [bloodRequest, setBloodRequest] = useState([]);
   const [volunteerrequest, setVolunteerRequest] = useState([]);
   const [blogs, setBlogs] = useState([]);
-  const [bookings, setBookings] = useState([]);
+  const [jobApplications, setJobApplications] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/users`, {
@@ -76,14 +76,14 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/bookings`, {
+    fetch(`http://localhost:5000/api/v1/jobapplications`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
     })
       .then((res) => res.json())
-      .then((data) => setBookings(data?.data?.result));
+      .then((data) => setJobApplications(data?.data?.result));
   }, []);
 
 
@@ -228,9 +228,9 @@ const DBCards = () => {
           <div className="flex items-center justify-between bg-[#ad5530] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {bookings?.length}{" "}
+                {jobApplications?.length}{" "}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Bookings</h3>
+              <h3 className="text-md font-bold text-white">Total Job Applications</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -240,7 +240,7 @@ const DBCards = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/mbookings")}
+            onClick={() => navigate("/cpanel/mjobapplications")}
             className="bg-[#8f4626] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">

@@ -15,7 +15,7 @@ const ManageBlogs = () => {
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/blogs")
+    fetch("https://alumbridge-server.vercel.app/api/v1/blogs")
       .then((res) => res.json())
       .then((data) => setBlogs(data?.data));
   }, [number]);
@@ -53,7 +53,7 @@ const ManageBlogs = () => {
           };
 
           // send to database
-          fetch(`http://localhost:5000/api/v1/blogs`, {
+          fetch(`https://alumbridge-server.vercel.app/api/v1/blogs`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -11,7 +11,7 @@ const ManageOrders = () => {
   const [allOrder, setAllOrder] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/orders")
+    fetch("https://alumbridge-server.vercel.app/api/v1/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data?.data?.result));
   }, [number]);

@@ -27,6 +27,8 @@ import Checkout from './Components/Pages/Checkout/Checkout'
 import ManageBookings from './Components/Dashboard/AdminDashboard/ManageBookings/ManageBookings'
 import ManageOrders from './Components/Dashboard/AdminDashboard/ManageOrders/ManageOrders'
 import ManageBlogs from './Components/Dashboard/AdminDashboard/ManageParts/ManageBlogs'
+import AboutUS from './Pages/AboutUS/AboutUS'
+import ContactUS from './Pages/ContactUS/ContactUS'
 
 function App() {
 
@@ -42,7 +44,8 @@ function App() {
             <Route path='/jobs/:id' element={<RequireAuth><SingleJobDetails /></RequireAuth>} />
             <Route path='/blogs' element={<Blogs />} />
             <Route path='/blogs/:id' element={<RequireAuth><SingleBlogDetails /></RequireAuth>} />
-            <Route path='/stafs' element={<Stafs />} />
+            <Route path='/aboutus' element={<AboutUS />} />
+            <Route path='/contactus' element={<ContactUS />} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/profile' element={<Profile />} />

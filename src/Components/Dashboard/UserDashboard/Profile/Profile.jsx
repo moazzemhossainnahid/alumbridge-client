@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../../firebase.init';
-import useProfile from '../../../../hooks/useProfile';
+import useProfile from '../../../../Hooks/useProfile';
 
 
 const Profile = () => {

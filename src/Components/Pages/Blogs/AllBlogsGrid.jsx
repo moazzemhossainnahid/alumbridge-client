@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {FaUser, FaClock} from "react-icons/fa"
 
 
 const AllBlogsGrid = ({ blog }) => {
@@ -16,8 +17,8 @@ const AllBlogsGrid = ({ blog }) => {
   }, [blog?.createdAt]);
 
   return (
-    <div onClick={() => navigate(`/blogs/${blog?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
-      <div className="mx-2 lg:mb-0 mb-8">
+    <div onClick={() => navigate(`/blogs/${blog?._id}`)} className="w-full border p-3 shadow-lg cursor-pointer hover:shadow-2xl">
+      {/* <div className="mx-2 lg:mb-0 mb-8">
         <div className="h-60">
           <img src={blog?.banner} className="w-full h-60" />
         </div>
@@ -69,8 +70,44 @@ const AllBlogsGrid = ({ blog }) => {
             </div>
           </div>
         </div>
+      </div> */}
+
+
+        <div className="mx-1 h-full">
+          <img
+            src={blog?.banner}
+            alt="blog_banner"
+            width="200"
+            height="150"
+            layout="responsive"
+            className="mx-auto rounded-3"
+          />
+          <div className="flex items-center justify-evenly mt-2">
+            <p className="flex items-center text-md">
+              {" "}
+              <FaUser className="me-1" /> {blog?.author}
+            </p>
+            <p className="flex items-center text-md">
+              {" "}
+              <FaClock className="me-1" />{" "}
+              {formattedDate}
+            </p>
+
+          </div>
+          <div className="px-3 my-3 space-y-3">
+            <h3 className="text-xl h-16 font-bold m-0">{blog?.title}</h3>
+            <p className="">
+              {blog?.description}
+            </p>
+            <button
+              className="my-2 px-3 py-2 inline-block mb-3 btn btn-outline"
+              onClick={() => navigate(`/blogs/${blog?._id}`)}
+            >
+              See More
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
   );
 };
 

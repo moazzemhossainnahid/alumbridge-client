@@ -2,8 +2,8 @@ import React from 'react';
 import HomeBanner from '../../Components/Pages/Home/HomeBanner';
 import Newsletter from '../../Components/Pages/Home/Newsletter';
 import AboutUs from '../../Components/Pages/Home/AboutUs';
-import PartsThress from '../../Components/Pages/Home/PartsThress';
-import ServiceThree from '../../Components/Pages/Home/ServiceThree';
+import BlogsThree from '../../Components/Pages/Home/BlogsThree';
+import JobsThree from '../../Components/Pages/Home/JobsThree';
 import HomeTopCarousel from '../../Components/Pages/Home/HomeTopCarousel';
 
 const Home = () => {
@@ -11,8 +11,8 @@ const Home = () => {
         <div className='w-full'>
             <HomeTopCarousel/>
             <HomeBanner/>
-            <PartsThress/>
-            <ServiceThree/>
+            <BlogsThree/>
+            <JobsThree/>
             <AboutUs/>
             <Newsletter/>
         </div>

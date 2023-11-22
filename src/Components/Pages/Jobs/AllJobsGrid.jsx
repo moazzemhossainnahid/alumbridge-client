@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const AllJobsGrid = ({ job }) => {
   const navigate = useNavigate();
 
-
   return (
     <div onClick={() => navigate(`/jobs/${job?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">

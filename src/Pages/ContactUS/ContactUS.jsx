@@ -9,9 +9,9 @@ const ContactUS = () => {
             <div className="hero" style={{ backgroundImage: "url(https://promo-theme.com/medina-wp/wp-content/uploads/2016/10/contact.jpg)", height: '420px', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                 <div className="hero-content text-center font-thin">
                     <div className="max-w-md">
-                        <h1 className="text-3xl md:text-5xl font-bold mb-2 text-[#0f52ba]">Helping Your Teeth
+                        <h1 className="text-3xl md:text-5xl font-bold mb-2 text-[#0f52ba]">Helping People
                         </h1>
-                        <h1 className='text-slate-800 mb-5 text-3xl md:text-5xl font-bold'>Stay Healthy One</h1>
+                        <h1 className='text-slate-800 mb-5 text-3xl md:text-5xl font-bold'>Stay Healthy</h1>
                         <p className="mb-5 text-slate-800">Check Out Our Services!</p>
 
                     </div>

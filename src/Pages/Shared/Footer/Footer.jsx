@@ -150,7 +150,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="">
-            <Clock />
+            {/* <Clock /> */}
           </div>
           <div className="text-center p-6 bg-black">
             <span>© {new Date().getFullYear()} Copyright: </span>

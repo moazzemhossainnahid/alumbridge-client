@@ -14,7 +14,7 @@ const HomeBanner = () => {
                             <p className="text-lg leading-6 text-white text-center xl:w-5/12 lg:w-8/12 md:w-10/12 mx-auto 2xl:pr-12 mt-4">A good idiom for kids is "It's raining cats and dogs." Kids know what both cats and dogs are from an early age.</p>
                         </div>
                         <div className="md:mt-12 mt-20">
-                            <Link to='aboutTT' smooth={true} duration={500} className="text-base cursor-pointer font-medium leading-4 text-indigo-700 bg-white sm:w-auto w-full rounded p-4 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-white">Explore More</Link>
+                            <Link to='/aboutus' smooth={true} duration={500} className="text-base cursor-pointer font-medium leading-4 text-indigo-700 bg-white sm:w-auto w-full rounded p-4 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-white">Explore More</Link>
                         </div>
                     </div>
                 </div>

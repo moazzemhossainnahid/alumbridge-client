@@ -1,9 +1,19 @@
 
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const DeleteBlogsModal = ({ deleteBlog, setNumber, number }) => {
     console.log(deleteBlog);
-    const { name, price, image, description, category, stock, sku, _id } = deleteBlog;
+    const [formattedDate, setFormattedDate] = useState('');
+    const { author, banner, category, description, title, createdAt, _id } = deleteBlog;
+
+
+    useEffect(() => {
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        const date = new Date(createdAt);
+        const formattedDate = date.toLocaleDateString('en-US', options);
+        setFormattedDate(formattedDate);
+    }, [createdAt]);
 
 
     const handleDelete = (id) => {
@@ -20,7 +30,7 @@ const DeleteBlogsModal = ({ deleteBlog, setNumber, number }) => {
                     // console.log(data);
                     toast.success(` Blog id (${_id}) has been deleted.`);
                     setNumber(number + 1);
-                }else if(data?.status === 'fail'){
+                } else if (data?.status === 'fail') {
                     toast.error(` Somethig wrong...`);
                 }
             })
@@ -35,14 +45,14 @@ const DeleteBlogsModal = ({ deleteBlog, setNumber, number }) => {
                     <h1 className='mb-4 badge badge-error text-2xl badge-lg p-4'>Delete Blog</h1>
                     <div className="w-full flex flex-col md:flex-row justify-between items-center gap-3">
                         <div className="w-full md:w-4/5 order-2 md:order-1">
-                            <h3 className="font-bold text-lg">{name}</h3>
+                            <h3 className="font-bold text-lg">{title}</h3>
                             <p className='my-4'>Category: {category}</p>
-                            <p className='my-4'>Price: {price}</p>
-                            <p className='my-4'>sku: {sku}</p>
-                            <p className='my-4'>Stock: {stock}</p>
+                            <p className='my-4'>Author: {author}</p>
+                            <p className='my-4'>Published: {formattedDate}</p>
+                            <p className='my-4'>Description: {description?.slice(0,150)}</p>
                         </div>
                         <div className="w-full md:w-1/5 order-1 md:order-2">
-                            <img src={image} alt="cover" className="w-24 h-24 rounded-full mx-auto" />
+                            <img src={banner} alt="cover" className="w-24 h-24 rounded-full mx-auto" />
                         </div>
                     </div>
                     <div className="modal-action">

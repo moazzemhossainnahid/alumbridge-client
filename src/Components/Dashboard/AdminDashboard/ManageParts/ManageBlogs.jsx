@@ -22,14 +22,6 @@ const ManageBlogs = () => {
 
   console.log(blogs);
 
-  function generateSku() {
-    const timestamp = Date.now();
-    const randomChars = Math.random().toString(36).substring(2, 7); // Generate random alphanumeric characters
-    const sku = `SKU-${timestamp}-${randomChars}`;
-    return sku;
-  }
-
-  const newProductSku = generateSku();
 
   const handleAddService = async (data) => {
     const image = data.photoURL[0];

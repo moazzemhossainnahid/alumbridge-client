@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { FaTrash } from "react-icons/fa";
 
 const SingleBlogDetails = () => {
   const navigate = useNavigate();
@@ -31,8 +32,13 @@ const SingleBlogDetails = () => {
     const data = {
       name: user?.displayName,
       photoURL: user?.photoURL,
+      email: user?.email,
       comment: c?.comment
     };
+
+    if (data?.comment?.length < 3) {
+      return toast.error("Comment are too Short");
+    }
 
     // send to database
     fetch(`http://localhost:5000/api/v1/blogs/${id}/comments`, {
@@ -45,10 +51,11 @@ const SingleBlogDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data?.status === "Successful") {
           toast.success("Comment Add Successfully");
           reset();
+          window.location.reload();
         } else {
           toast.error("Faild to Add Comment");
         }
@@ -57,6 +64,25 @@ const SingleBlogDetails = () => {
   }
 
 
+  const handleDeleteComment = (data) => {
+    const url = `http://localhost:5000/api/v1/blogs/${blog?._id}/comments/${data?._id}`;
+    // console.log(url);
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data?.status === "Successful") {
+          toast.success("Comment Delete Successfully");
+          window.location.reload();
+        } else {
+          toast.error("Faild to Delete Comment");
+        }
+      })
+  }
   return (
     <div className="w-full">
       <div className="container py-7 w-full md:w-3/4 mx-auto">
@@ -99,13 +125,16 @@ const SingleBlogDetails = () => {
               {blog?.comments && (
                 <div className="w-full md:w-5/6 p-5 grid grid-cols-1 gap-5 justify-center items-center">
                   {blog?.comments?.map((data) => (
-                    <div key={data?._id} className="w-52 flex justify-between items-center gap-3">
+                    <div key={data?._id} className="flex justify-start items-center gap-5 relative">
                       <div className="">
                         <img src={data?.photoURL} alt="img" className="w-12 h-12 rounded-full" />
                       </div>
-                      <div className="">
-                        <h4 className="text-md font-bold">{data?.name}</h4>
-                        <h4 className="text-sm font-normal">{data?.comment}</h4>
+                      <div className="text-start">
+                        <div className="flex items-center gap-2">
+                          <h4 className="text-md font-bold">{data?.name}</h4>
+                          {(user?.email === data?.email) && <FaTrash onClick={() => handleDeleteComment(data)} className="text-xs cursor-pointer hover:text-red-700 hover:scale-105 duration-300" />}
+                        </div>
+                        <h4 className="text-sm font-normal pl-2">{data?.comment}</h4>
                       </div>
                     </div>
                   ))}
@@ -144,6 +173,7 @@ const SingleBlogDetails = () => {
                     <textarea
                       {...register("comment")}
                       type="text"
+                      required
                       placeholder="Enter Your Comment"
                       className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
                     />

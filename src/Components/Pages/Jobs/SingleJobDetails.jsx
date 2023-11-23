@@ -89,7 +89,7 @@ const SingleJobDetails = () => {
             <div className="">
               <p className="text-md p-5 md:px-10">{job?.description}</p>
             </div>
-            {/* <div className="pt-7">
+            <div className="pt-7">
               <label
                 for="applyJob"
                 className="w-2/3 md:w-2/5 btn btn-outline btn-secondary flex items-center justify-center mx-auto"
@@ -97,7 +97,7 @@ const SingleJobDetails = () => {
                 Apply{" "}
                 <span className="text-2xl -mt-1">&#8608;</span>
               </label>
-            </div> */}
+            </div>
           </div>
         ) : (
           <EmptyList />

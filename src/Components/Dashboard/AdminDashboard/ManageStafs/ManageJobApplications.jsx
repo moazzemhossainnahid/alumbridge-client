@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import ManageStafsRow from "./ManageStafsRow";
+import ManageJobApplicationsRow from "./ManageJobApplicationsRow";
 import DeleteStafsModal from "./Modals/DeleteStafsModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const ManageStafs = () => {
+const ManageJobApplications = () => {
   const [number, setNumber] = useState(0);
-  const [stafs, setStafs] = useState(null);
+  const [applications, setApplications] = useState(null);
   const [deleteStaf, setDeleteStaf] = useState(null);
   const { register, handleSubmit, reset } = useForm();
 
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/stafs")
+    fetch("http://localhost:5000/api/v1/jobapplications")
       .then((res) => res.json())
-      .then((data) => setStafs(data?.data));
+      .then((data) => setApplications(data?.data));
   }, [number]);
 
   const handleAddStaf = async (data) => {
@@ -70,16 +70,8 @@ const ManageStafs = () => {
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Stafs: {stafs?.result?.length}
+            Total Job Applications: {applications?.result?.length}
           </p>
-          <div className="pb-5">
-            <label
-              for="addStaf"
-              className="rounded btn btn-sm btn-info btn-outline"
-            >
-              Add Staf
-            </label>
-          </div>
           <table className="border-collapse w-full bg-slate-200">
             {/* <!-- head --> */}
             <thead>
@@ -88,16 +80,13 @@ const ManageStafs = () => {
                   Index
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                  Image
-                </th>
-                <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                   Name
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                  Age
+                  Phone
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                  Experence
+                  Address
                 </th>
                 <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
                   Action
@@ -107,13 +96,13 @@ const ManageStafs = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {stafs?.result?.map((staf, index) => (
-                <ManageStafsRow
-                  key={staf?._id}
-                  staf={staf}
+              {applications?.result?.map((application, index) => (
+                <ManageJobApplicationsRow
+                  key={application?._id}
+                  application={application}
                   index={index}
                   setDeleteStaf={setDeleteStaf}
-                ></ManageStafsRow>
+                ></ManageJobApplicationsRow>
               ))}
             </tbody>
           </table>
@@ -185,4 +174,4 @@ const ManageStafs = () => {
   );
 };
 
-export default ManageStafs;
+export default ManageJobApplications;

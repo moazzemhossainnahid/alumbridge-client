@@ -14,7 +14,7 @@ import { ToastContainer } from 'react-toastify'
 import Jobs from './Pages/Jobs/Jobs'
 import Blogs from './Pages/Blogs/Blogs'
 import ManageJobs from './Components/Dashboard/AdminDashboard/ManageServices/ManageJobs'
-import ManageStafs from './Components/Dashboard/AdminDashboard/ManageStafs/ManageStafs'
+import ManageJobApplications from './Components/Dashboard/AdminDashboard/ManageStafs/ManageJobApplications'
 import SingleBlogDetails from './Components/Pages/Blogs/SingleBlogDetails'
 import SingleJobDetails from './Components/Pages/Jobs/SingleJobDetails'
 import ManageBookings from './Components/Dashboard/AdminDashboard/ManageBookings/ManageBookings'
@@ -55,9 +55,8 @@ function App() {
               <Route path="musers" element={<ManageUsers />} />
               <Route path="mjobs" element={<ManageJobs />} />
               <Route path="mblogs" element={<ManageBlogs />} />
-              <Route path="mjobapplications" element={<ManageStafs />} />
-              <Route path="mbloods" element={<ManageOrders />} />
-              <Route path="mvolunteers" element={<ManageBookings />} />
+              <Route path="msocializations" element={<ManageOrders />} />
+              <Route path="mjobapplications" element={<ManageJobApplications />} />
             </Route>
           </Routes>
         </div>

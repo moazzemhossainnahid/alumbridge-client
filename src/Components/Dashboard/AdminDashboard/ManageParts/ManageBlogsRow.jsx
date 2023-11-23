@@ -118,7 +118,7 @@ const ManageBlogsRow = ({ blog, index, setDeleteBlog }) => {
             </td>
             <td className="w-full lg:w-auto text-xs text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <div className="flex justify-center pb-1 items-center gap-2">
-                    <label htmlFor="update-blog-modal" onClick={() => setDeleteBlog(blog)} className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaPen className='text-green-700' /></label>
+                    <label htmlFor="update-blog-modal" className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaPen className='text-green-700' /></label>
                     <label htmlFor="delete-blog-modal" onClick={() => setDeleteBlog(blog)} className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaTrash className='text-red-700' /></label>
                 </div>
 

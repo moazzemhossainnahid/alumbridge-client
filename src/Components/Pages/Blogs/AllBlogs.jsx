@@ -14,7 +14,7 @@ const AllBlogs = () => {
       </h1>
 
       {blogs ? (
-        <div className="w-full md:w-5/6 mx-auto p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
+        <div className="w-full mx-auto p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
           {blogs?.map((blog) => (
             <AllBlogsGrid blog={blog} key={blog?._id} />
           ))}

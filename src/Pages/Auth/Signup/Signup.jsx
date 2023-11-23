@@ -39,7 +39,7 @@ const Signup = () => {
         await updateProfile({ displayName: displayName })
             .then(() => {
                 if (email) {
-                    fetch(`https://alumbridge-server.vercel.app/api/v1/users/${email}`, {
+                    fetch(`http://localhost:5000/api/v1/users/${email}`, {
                         method: 'PUT',
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify({ email, displayName, accType })
@@ -112,7 +112,7 @@ const Signup = () => {
                                         Select Type
                                     </option>
                                     <option value="Alumni">Alumni</option>
-                                    <option value="Existing Student">Existing Student</option>
+                                    <option value="Student">Student</option>
                                 </select>
 
                             </div>

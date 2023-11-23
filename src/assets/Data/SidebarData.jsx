@@ -1,4 +1,4 @@
-import { faBookAtlas, faBookmark, faBraille, faDashboard, faListCheck, faShoppingCart, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBookAtlas, faBookmark, faBraille, faDashboard, faHourglass, faListCheck, faShoppingCart, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export const SidebarData = [
     {
@@ -14,7 +14,7 @@ export const SidebarData = [
     {
         title: "Manage Jobs",
         href: "mjobs",
-        icon: faShoppingCart,
+        icon: faHourglass,
     },
     {
         title: "Manage Blogs",
@@ -22,18 +22,13 @@ export const SidebarData = [
         icon: faBraille,
     },
     {
-        title: "Manage Bloods",
-        href: "mbloodsrequest",
+        title: "Manage Socializations",
+        href: "msocializations",
         icon: faBookmark,
     },
     {
-        title: "Manage Volunteers",
-        href: "mvolunteersrequest",
-        icon: faListCheck,
-    },
-    {
         title: "Manage Job Applications",
-        href: "mjobapplication",
+        href: "mjobapplications",
         icon: faBookAtlas,
     },
 ];

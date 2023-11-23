@@ -15,8 +15,7 @@ const DBCards = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [jobs, setJobs] = useState([]);
-  const [bloodRequest, setBloodRequest] = useState([]);
-  const [volunteerrequest, setVolunteerRequest] = useState([]);
+  const [socializations, setSocializations] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [jobApplications, setJobApplications] = useState([]);
 
@@ -54,25 +53,14 @@ const DBCards = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/bloods`, {
+    fetch(`http://localhost:5000/api/v1/socializations`, {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
     })
       .then((res) => res.json())
-      .then((data) => setBloodRequest(data?.data?.result));
-  }, []);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/orders`, {
-      method: "GET",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setVolunteerRequest(data?.data?.result));
+      .then((data) => setSocializations(data?.data?.result));
   }, []);
 
   useEffect(() => {
@@ -123,7 +111,7 @@ const DBCards = () => {
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {jobs?.length}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Jobs</h3>
+              <h3 className="text-md font-bold text-white">Total Job Posts</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -149,7 +137,7 @@ const DBCards = () => {
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {blogs?.length}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Blogs</h3>
+              <h3 className="text-md font-bold text-white">Total Blog Posts</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -169,14 +157,14 @@ const DBCards = () => {
           </div>
         </div>
 
-        {/* Total Bloods Request */}
+        {/* Total Socializations */}
         <div className="">
           <div className="flex items-center justify-between bg-[#572194b9] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {bloodRequest?.length}
+                {socializations?.length}
               </h3>
-              <h3 className="text-md font-bold text-white">Total Bloods Request</h3>
+              <h3 className="text-md font-bold text-white">Total Socialization Posts</h3>
             </div>
             <div className="">
               <FontAwesomeIcon
@@ -186,35 +174,8 @@ const DBCards = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/mbloodsrequest")}
+            onClick={() => navigate("/cpanel/msocializations")}
             className="bg-[#572194ea] cursor-pointer py-2 text-center rounded-b-xl"
-          >
-            <h2 className="text-md text-white">
-              More Info{" "}
-              <FontAwesomeIcon className="pl-2" icon={faArrowAltCircleRight} />{" "}
-            </h2>
-          </div>
-        </div>
-
-        {/* Total Volunteers Request */}
-        <div className="">
-          <div className="flex items-center justify-between bg-[#4040f5] p-3 rounded-t-xl">
-            <div className="">
-              <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {volunteerrequest?.length}{" "}
-              </h3>
-              <h3 className="text-md font-bold text-white">Total Volunteers Request</h3>
-            </div>
-            <div className="">
-              <FontAwesomeIcon
-                className="text-[#42424281] text-3xl md:text-4xl"
-                icon={faListCheck}
-              />
-            </div>
-          </div>
-          <div
-            onClick={() => navigate("/cpanel/mvolunteersrequest")}
-            className="bg-[#2c2c9c] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">
               More Info{" "}

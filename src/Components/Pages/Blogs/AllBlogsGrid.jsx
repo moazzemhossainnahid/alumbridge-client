@@ -39,13 +39,13 @@ const AllBlogsGrid = ({ blog }) => {
             </p>
 
           </div>
-          <div className="px-3 my-3 space-y-3">
+          <div className="text-start px-3 my-3 space-y-3">
             <h3 className="text-xl h-16 font-bold m-0">{blog?.title}</h3>
             <p className="">
               {blog?.description}
             </p>
             <button
-              className="my-2 px-3 py-2 inline-block mb-3 btn btn-outline"
+              className="my-2 px-3 py-2 inline-block mb-3 btn btn-outline w-full mx-auto"
               onClick={() => navigate(`/blogs/${blog?._id}`)}
             >
               See More

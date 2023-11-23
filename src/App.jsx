@@ -2,10 +2,7 @@
 import './App.css'
 import Home from './Pages/Home/Home'
 import RequireAuth from './Components/Others/RequireAuth/RequireAuth'
-import Signin from './Pages/Auth/Signin/Signin'
-import Signup from './Pages/Auth/Signup/Signup'
 import NotFound from './Pages/NotFound/NotFound'
-import Profile from './Components/Dashboard/UserDashboard/Profile/Profile'
 import CPanel from './Components/Dashboard/AdminDashboard/Admin/CPanel'
 import AdDashboard from './Components/Dashboard/AdminDashboard/Dashboard/AdDashboard'
 import ManageUsers from './Components/Dashboard/AdminDashboard/ManageUsers/ManageUsers'
@@ -25,13 +22,16 @@ import ManageOrders from './Components/Dashboard/AdminDashboard/ManageOrders/Man
 import ManageBlogs from './Components/Dashboard/AdminDashboard/ManageParts/ManageBlogs'
 import AboutUS from './Pages/AboutUS/AboutUS'
 import ContactUS from './Pages/ContactUS/ContactUS'
+import Profile from './Components/Dashboard/UserDashboard/Profile/Profile'
+import Signup from './Pages/Auth/Signup/Signup'
+import Signin from './Pages/Auth/Signin/Signin'
 
 function App() {
 
   return (
     <>
       <div className="App pt-20">
-        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mblogs' && window.location.pathname !== '/cpanel/mjobs' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings' && window.location.pathname !== '/cpanel/morders') && <Header />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/mblogs' && window.location.pathname !== '/cpanel/mjobs' && window.location.pathname !== '/cpanel/msocializations' && window.location.pathname !== '/cpanel/mjobapplications') && <Header />}
         {/* <Header /> */}
         <div className="">
           <Routes>
@@ -49,7 +49,7 @@ function App() {
 
 
             {/* Control Panel Routes */}
-            <Route path="/cpanel" element={<RequireAuth><RequireAdmin><CPanel /></RequireAdmin></RequireAuth>}>
+            <Route path="/cpanel" element={<RequireAuth><CPanel /></RequireAuth>}>
               <Route index element={<AdDashboard />} />
               <Route path="addashboard" element={<AdDashboard />} />
               <Route path="musers" element={<ManageUsers />} />
@@ -61,7 +61,7 @@ function App() {
             </Route>
           </Routes>
         </div>
-        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/mblogs' && window.location.pathname !== '/cpanel/mjobs' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings' && window.location.pathname !== '/cpanel/morders') && <Footer />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/mblogs' && window.location.pathname !== '/cpanel/mjobs' && window.location.pathname !== '/cpanel/msocializations' && window.location.pathname !== '/cpanel/mjobapplications') && <Footer />}
         <ToastContainer />
       </div>
     </>

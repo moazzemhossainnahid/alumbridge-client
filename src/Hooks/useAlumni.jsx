@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const UseAdmin = () => {
+const UseAlumni = () => {
     const [user] = useAuthState(auth);
-    const [admin , setAdmin] = useState(false);
-    const [adminLoading , setAdminLoading] = useState(true);
+    const [alumni , setAlumni] = useState(false);
+    const [alumniLoading , setAlumniLoading] = useState(true);
  
 //   console.log(admin);
     useEffect( () => {
         const email = user?.email; 
-        fetch(`https://alumbridge-server.vercel.app/api/v1/users/isAdmin/${email}`, {
+        fetch(`http://localhost:5000/api/v1/users/${email}`, {
             method: 'GET',
             headers: {
                 'content-type' : 'application/json',
@@ -20,14 +20,14 @@ const UseAdmin = () => {
         .then(res => res.json())
         .then(data => {
             // console.log(data);
-            setAdmin(data?.role === true);
-            setAdminLoading(false);
+            setAlumni(data?.accType === "Alumni");
+            setAlumniLoading(false);
         })
 
     },[user]);
 
 
-    return [admin, adminLoading];
+    return [alumni, alumniLoading];
 };
 
-export default UseAdmin;
+export default UseAlumni;

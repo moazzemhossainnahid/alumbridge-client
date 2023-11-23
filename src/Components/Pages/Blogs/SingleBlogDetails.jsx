@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useBlogs from "../../../Hooks/useBlogs";
 import EmptyList from "../../Others/EmptyList/EmptyList";
+import { GiCancel } from "react-icons/gi";
 import Chip from "../../Others/Chip";
 import RelatedParts from "./RelatedParts";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../../firebase.init";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const SingleBlogDetails = () => {
   const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm();
+  const [user] = useAuthState(auth);
   const { id } = useParams();
   const [blogs] = useBlogs();
   const [blog, setBlog] = useState(null);
@@ -18,6 +25,37 @@ const SingleBlogDetails = () => {
       setBlog(part);
     }
   }, [blogs, id]);
+
+
+  const handleAddComment = async (c) => {
+    const data = {
+      name: user?.displayName,
+      photoURL: user?.photoURL,
+      comment: c?.comment
+    };
+
+    // send to database
+    fetch(`http://localhost:5000/api/v1/blogs/${id}/comments`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.status === "Successful") {
+          toast.success("Comment Add Successfully");
+          reset();
+        } else {
+          toast.error("Faild to Add Comment");
+        }
+      });
+
+  }
+
 
   return (
     <div className="w-full">
@@ -55,6 +93,70 @@ const SingleBlogDetails = () => {
               <p className="blog-desc p-5 md:px-10">{blog?.description}</p>
             </div>
 
+            <div className="w-full p-5 py-16">
+              <h3 className="text-start text-xl font-bold">Comments:</h3>
+
+              {blog?.comments && (
+                <div className="w-full md:w-5/6 p-5 grid grid-cols-1 gap-5 justify-center items-center">
+                  {blog?.comments?.map((data) => (
+                    <div key={data?._id} className="w-52 flex justify-between items-center gap-3">
+                      <div className="">
+                        <img src={data?.photoURL} alt="img" className="w-12 h-12 rounded-full" />
+                      </div>
+                      <div className="">
+                        <h4 className="text-md font-bold">{data?.name}</h4>
+                        <h4 className="text-sm font-normal">{data?.comment}</h4>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="py-5 flex justify-start">
+                <label
+                  for="addComment"
+                  className="rounded btn btn-sm btn-outline"
+                >
+                  Add Comment
+                </label>
+              </div>
+
+            </div>
+            <>
+              {/* <!-- The add Blog modal --> */}
+
+              <input type="checkbox" id="addComment" class="modal-toggle" />
+              <div class="modal">
+                <div class="modal-box relative  bg-slate-300">
+                  <label
+                    for="addComment"
+                    class="btn btn-sm btn-circle absolute right-2 top-2"
+                  >
+                    ✕
+                  </label>
+                  <h3 class="text-lg font-bold">Please Add Your Comment</h3>
+                  <form
+                    onSubmit={handleSubmit(handleAddComment)}
+                    action=""
+                    className="py-3"
+                  >
+
+                    <textarea
+                      {...register("comment")}
+                      type="text"
+                      placeholder="Enter Your Comment"
+                      className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
+                    />
+
+                    <input
+                      className="btn px-7 btn-primary mt-5 block mx-auto"
+                      type="submit"
+                      value="POST"
+                    />
+                  </form>
+                </div>
+              </div>
+            </>
           </div>
         ) : (
           <EmptyList />

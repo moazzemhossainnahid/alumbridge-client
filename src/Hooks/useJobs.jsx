@@ -4,7 +4,7 @@ const useJobs = () => {
     const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        fetch(`https://alumbridge-server.vercel.app/api/v1/jobs`, {
+        fetch(`http://localhost:5000/api/v1/jobs`, {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

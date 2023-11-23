@@ -17,7 +17,7 @@ const DeleteBlogsModal = ({ deleteBlog, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `https://alumbridge-server.vercel.app/api/v1/blogs/${id}`;
+        const url = `http://localhost:5000/api/v1/blogs/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

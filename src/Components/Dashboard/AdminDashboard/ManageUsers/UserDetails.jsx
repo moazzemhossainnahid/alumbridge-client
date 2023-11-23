@@ -10,7 +10,7 @@ const UserDetails = ({ user, index }) => {
 
     const handleMakeAdmin = () => {
         if (admin) {
-            fetch(`https://alumbridge-server.vercel.app/api/v1/users/admin/${email}`, {
+            fetch(`http://localhost:5000/api/v1/users/admin/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -31,7 +31,7 @@ const UserDetails = ({ user, index }) => {
 
     const handleRemoveAdmin = () => {
         if (admin) {
-            fetch(`https://alumbridge-server.vercel.app/api/v1/users/admin/remove/${email}`, {
+            fetch(`http://localhost:5000/api/v1/users/admin/remove/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',
@@ -51,7 +51,7 @@ const UserDetails = ({ user, index }) => {
 
     const handleRemoveUser = (id) => {
         if (admin) {
-            fetch(`https://alumbridge-server.vercel.app/api/v1/users/${id}`, {
+            fetch(`http://localhost:5000/api/v1/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',

@@ -7,7 +7,7 @@ const DeleteJobModal = ({ deleteJob, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `https://alumbridge-server.vercel.app/api/v1/jobs/${id}`;
+        const url = `http://localhost:5000/api/v1/jobs/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

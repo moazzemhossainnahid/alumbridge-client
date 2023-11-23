@@ -9,7 +9,7 @@ const ManageBookings = () => {
   const [allBookings, setAllBookings] = useState(false);
 
   useEffect(() => {
-    fetch("https://alumbridge-server.vercel.app/api/v1/bookings")
+    fetch("http://localhost:5000/api/v1/bookings")
       .then((res) => res.json())
       .then((data) => setBookings(data?.data));
   }, [number]);

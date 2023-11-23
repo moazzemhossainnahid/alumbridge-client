@@ -7,7 +7,7 @@ const ManageUsers = () => {
   const [allUsers, setAllUsers] = useState(false);
 
   useEffect(() => {
-    fetch("https://alumbridge-server.vercel.app/api/v1/users", {
+    fetch("http://localhost:5000/api/v1/users", {
       method: "GET",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

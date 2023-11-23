@@ -34,7 +34,7 @@ const SingleJobDetails = () => {
   console.log(application);
 
       // send to database
-      fetch(`https://alumbridge-server.vercel.app/api/v1/jobapplications`, {
+      fetch(`http://localhost:5000/api/v1/jobapplications`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

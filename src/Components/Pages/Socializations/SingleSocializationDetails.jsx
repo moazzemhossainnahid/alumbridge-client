@@ -5,19 +5,20 @@ import Chip from "../../Others/Chip";
 import useJobs from "../../../Hooks/useJobs";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import useSocializations from "../../../Hooks/useSocializations";
 
-const SingleJobDetails = () => {
+const SingleSocializationDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [jobs] = useJobs();
-  const [job, setJob] = useState(null);
+  const [socializations] = useSocializations();
+  const [socialization, setSocialization] = useState(null);
   const { register, handleSubmit, reset } = useForm();
 
 
   useEffect(() => {
-    let service = jobs?.find((s) => s._id === id);
+    let service = socializations?.find((s) => s._id === id);
     if (service) {
-      setJob(service);
+      setSocialization(service);
     }
   }, [jobs, id]);
 
@@ -33,7 +34,7 @@ const SingleJobDetails = () => {
   console.log(application);
 
       // send to database
-      fetch(`http://localhost:5000/api/v1/jobapplications`, {
+      fetch(`http://localhost:5000/api/v1/socializations`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -66,27 +67,27 @@ const SingleJobDetails = () => {
           <div className="blog-wrap pt-10">
             <header>
               <p className="blog-date pb-5 font-semibold text-gray-500">
-                Published {new Date(job.createdAt).toLocaleString()}
+                Published {new Date(socialization.createdAt).toLocaleString()}
               </p>
               <h1 className="text-black pb-3 text-2xl md:text-4xl font-bold">
-                {job?.jobTitle}
+                {socialization?.jobTitle}
               </h1>
               <div className="blog-subCategory w-full flex justify-center">
-                <Chip label={job?.companyName} />
+                <Chip label={socialization?.companyName} />
               </div>
             </header>
             <div className="space-y-4">
               <h2 className="text-indigo-700 text-xl mt-7 font-semibold">
                 <span className="pr-3"> Position:</span>
-                {job?.positionName}
+                {socialization?.positionName}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
                 <span className="pr-3"> Vacancy:</span>
-                {job?.vacancy}
+                {socialization?.vacancy}
               </h3>
             </div>
             <div className="">
-              <p className="text-md p-5 md:px-10">{job?.description}</p>
+              <p className="text-md p-5 md:px-10">{socialization?.description}</p>
             </div>
             <div className="pt-7">
               <label
@@ -162,4 +163,4 @@ const SingleJobDetails = () => {
   );
 };
 
-export default SingleJobDetails;
+export default SingleSocializationDetails;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ManageJobApplicationsRow from "./ManageJobApplicationsRow";
-import DeleteStafsModal from "./Modals/DeleteStafsModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 

@@ -11,24 +11,12 @@ const ManageJobs = () => {
   const { register, handleSubmit, reset } = useForm();
   const [allJobs, setAllJobs] = useState(false);
 
-  const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
-
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/jobs")
       .then((res) => res.json())
       .then((data) => setJobs(data?.data));
   }, [number]);
 
-  console.log(jobs);
-
-  function generateSku() {
-    const timestamp = Date.now();
-    const randomChars = Math.random().toString(36).substring(2, 7); // Generate random alphanumeric characters
-    const sku = `SKU-${timestamp}-${randomChars}`;
-    return sku;
-  }
-
-  const newProductSku = generateSku();
 
   const handleAddJob = async (data) => {
 

@@ -13,18 +13,19 @@ import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Jobs from './Pages/Jobs/Jobs'
 import Blogs from './Pages/Blogs/Blogs'
-import ManageJobs from './Components/Dashboard/AdminDashboard/ManageServices/ManageJobs'
-import ManageJobApplications from './Components/Dashboard/AdminDashboard/ManageStafs/ManageJobApplications'
+import ManageJobs from './Components/Dashboard/AdminDashboard/ManageJobs/ManageJobs'
+import ManageJobApplications from './Components/Dashboard/AdminDashboard/ManageJobApplications/ManageJobApplications'
 import SingleBlogDetails from './Components/Pages/Blogs/SingleBlogDetails'
 import SingleJobDetails from './Components/Pages/Jobs/SingleJobDetails'
-import ManageBookings from './Components/Dashboard/AdminDashboard/ManageBookings/ManageBookings'
-import ManageOrders from './Components/Dashboard/AdminDashboard/ManageOrders/ManageOrders'
-import ManageBlogs from './Components/Dashboard/AdminDashboard/ManageParts/ManageBlogs'
+import ManageBlogs from './Components/Dashboard/AdminDashboard/ManageBlogs/ManageBlogs'
 import AboutUS from './Pages/AboutUS/AboutUS'
 import ContactUS from './Pages/ContactUS/ContactUS'
 import Profile from './Components/Dashboard/UserDashboard/Profile/Profile'
 import Signup from './Pages/Auth/Signup/Signup'
 import Signin from './Pages/Auth/Signin/Signin'
+import Socializations from './Pages/Socializations/Socializations'
+import ManageSocializations from './Components/Dashboard/AdminDashboard/ManageSocializations/ManageSocializations'
+import SingleSocializationDetails from './Components/Pages/Socializations/SingleSocializationDetails'
 
 function App() {
 
@@ -40,6 +41,8 @@ function App() {
             <Route path='/jobs/:id' element={<RequireAuth><SingleJobDetails /></RequireAuth>} />
             <Route path='/blogs' element={<Blogs />} />
             <Route path='/blogs/:id' element={<RequireAuth><SingleBlogDetails /></RequireAuth>} />
+            <Route path='/socializations' element={<Socializations />} />
+            <Route path='/socializations/:id' element={<RequireAuth><SingleSocializationDetails /></RequireAuth>} />
             <Route path='/aboutus' element={<AboutUS />} />
             <Route path='/contactus' element={<ContactUS />} />
             <Route path='/signin' element={<Signin />} />
@@ -55,7 +58,7 @@ function App() {
               <Route path="musers" element={<ManageUsers />} />
               <Route path="mjobs" element={<ManageJobs />} />
               <Route path="mblogs" element={<ManageBlogs />} />
-              <Route path="msocializations" element={<ManageOrders />} />
+              <Route path="msocializations" element={<ManageSocializations />} />
               <Route path="mjobapplications" element={<ManageJobApplications />} />
             </Route>
           </Routes>

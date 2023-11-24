@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useBlogs from "../../../Hooks/useBlogs";
 import EmptyList from "../../Others/EmptyList/EmptyList";
-import { GiCancel } from "react-icons/gi";
 import Chip from "../../Others/Chip";
-import RelatedParts from "./RelatedParts";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 import { useForm } from "react-hook-form";
@@ -192,7 +190,6 @@ const SingleBlogDetails = () => {
           <EmptyList />
         )}
       </div>
-      <RelatedParts part={blog} />
     </div>
   );
 };

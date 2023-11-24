@@ -8,7 +8,7 @@ const useProfile = () => {
     const email = user?.email;
 
     useEffect(() => {
-        fetch(`https://alumbridge-server.vercel.app/api/v1/users/${email}`, {
+        fetch(`http://localhost:5000/api/v1/users/${email}`, {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -18,7 +18,7 @@ const useProfile = () => {
             .then(data => setProfile(data))
     }, [email]);
 
-    console.log(profile);
+    // console.log(profile);
 
     return [profile];
 };

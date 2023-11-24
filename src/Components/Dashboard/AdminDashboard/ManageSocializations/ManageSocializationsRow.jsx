@@ -3,14 +3,14 @@ import { useForm } from 'react-hook-form';
 import { FaPen, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
-const ManageBlogsRow = ({ blog, index, setDeleteBlog }) => {
+const ManageSocializationsRow = ({ blog, index, setDeleteBlog }) => {
 
     const { title, banner, category, author, description, _id } = blog;
     const { register, handleSubmit, reset } = useForm();
 
     const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
-    const handleUpdateService = async (data) => {
+    const handleUpdateBlog = async (data) => {
 
 
         if (data?.photoURL[0]) {
@@ -137,7 +137,7 @@ const ManageBlogsRow = ({ blog, index, setDeleteBlog }) => {
                     </label>
                     <h3 class="text-lg font-bold">Please Update Blog Information</h3>
                     <form
-                        onSubmit={handleSubmit(handleUpdateService)}
+                        onSubmit={handleSubmit(handleUpdateBlog)}
                         action=""
                         className="py-3"
                     >
@@ -190,4 +190,4 @@ const ManageBlogsRow = ({ blog, index, setDeleteBlog }) => {
     );
 };
 
-export default ManageBlogsRow;
+export default ManageSocializationsRow;

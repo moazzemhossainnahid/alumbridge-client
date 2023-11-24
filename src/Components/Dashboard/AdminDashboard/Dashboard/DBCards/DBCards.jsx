@@ -79,7 +79,7 @@ const DBCards = () => {
     <div className="">
       <div className="grid md:grid-cols-2 gap-5 py-10 text-start">
         {/* Registered Users */}
-        <div className="">
+        {/* <div className="">
           <div className="flex items-center justify-between bg-[#252525] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
@@ -103,7 +103,7 @@ const DBCards = () => {
               <FontAwesomeIcon className="pl-2" icon={faArrowAltCircleRight} />{" "}
             </h2>
           </div>
-        </div>
+        </div> */}
         {/* Total Jobs */}
         <div className="">
           <div className="flex items-center justify-between bg-[#17A2BB] p-3 rounded-t-xl">

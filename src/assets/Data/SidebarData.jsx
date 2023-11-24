@@ -6,11 +6,11 @@ export const SidebarData = [
         href: "addashboard",
         icon: faDashboard,
     },
-    {
-        title: "Manage Users",
-        href: "musers",
-        icon: faUsers,
-    },
+    // {
+    //     title: "Manage Users",
+    //     href: "musers",
+    //     icon: faUsers,
+    // },
     {
         title: "Manage Jobs",
         href: "mjobs",

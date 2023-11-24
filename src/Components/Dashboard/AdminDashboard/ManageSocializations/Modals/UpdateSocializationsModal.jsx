@@ -9,6 +9,7 @@ const UpdateSocializationsModal = ({ updatePost, setNumber, number }) => {
 
     const handleUpdatePost = async (data) => {
         const post = {
+            category: category,
             title: data.title,
             quantity: data.quantity,
             location: data.location,

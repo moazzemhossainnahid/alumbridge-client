@@ -3,10 +3,12 @@ import DeleteJobModal from "./Modals/DeleteJobModal";
 import ManageJobsRow from "./ManageJobsRow";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import UpdateJobModal from "./Modals/UpdateJobModal";
 
 const ManageJobs = () => {
   const [number, setNumber] = useState(0);
   const [jobs, setJobs] = useState(null);
+  const [updateJob, setUpdateJob] = useState(null);
   const [deleteJob, setDeleteJob] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const [allJobs, setAllJobs] = useState(false);
@@ -40,7 +42,7 @@ const ManageJobs = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          console.log(data);
+        console.log(data);
         if (data?.status === "Successful") {
           toast.success("Job Add Successfully");
           reset();
@@ -96,6 +98,7 @@ const ManageJobs = () => {
                     key={job?._id}
                     job={job}
                     index={index}
+                    setUpdateJob={setUpdateJob}
                     setDeleteJob={setDeleteJob}
                   ></ManageJobsRow>
                 ))
@@ -106,6 +109,7 @@ const ManageJobs = () => {
                       key={job?._id}
                       job={job}
                       index={index}
+                      setUpdateJob={setUpdateJob}
                       setDeleteJob={setDeleteJob}
                     ></ManageJobsRow>
                   ))}
@@ -123,6 +127,13 @@ const ManageJobs = () => {
             </div>
           )}
         </div>
+        {updateJob && (
+          <UpdateJobModal
+          updateJob={updateJob}
+            setNumber={setNumber}
+            number={number}
+          ></UpdateJobModal>
+        )}
         {deleteJob && (
           <DeleteJobModal
             deleteJob={deleteJob}
@@ -157,18 +168,18 @@ const ManageJobs = () => {
             />
             <div className="w-full flex flex-col md:flex-row gap-3">
 
-            <input
-              {...register("companyName")}
-              type="text"
-              placeholder="Enter Company Name"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-            />
-            <input
-              {...register("positionName")}
-              type="text"
-              placeholder="Enter Position Name"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-            />
+              <input
+                {...register("companyName")}
+                type="text"
+                placeholder="Enter Company Name"
+                className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
+              />
+              <input
+                {...register("positionName")}
+                type="text"
+                placeholder="Enter Position Name"
+                className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
+              />
             </div>
             <input
               {...register("vacancy")}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPen, FaTrash } from 'react-icons/fa';
+import { FaEye, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2'
 const ManageJobApplicationsRow = ({ application, index, setDeleteStaf }) => {
 
@@ -66,7 +66,7 @@ const ManageJobApplicationsRow = ({ application, index, setDeleteStaf }) => {
             </td>
             <td className="w-full lg:w-auto text-xs p-2 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <div className="flex justify-between px-3 pb-1 gap-2 items-center">
-                    <label htmlFor="view-application-modal" className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaPen className='text-green-700' /></label>
+                    <label htmlFor="view-application-modal" className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaEye className='text-green-700' /></label>
                     <label onClick={() => handleDelete(_id)} className="btn text-white bg-white btn-xs"><FaTrash className='text-red-700' /></label>
                 </div>
             </td>

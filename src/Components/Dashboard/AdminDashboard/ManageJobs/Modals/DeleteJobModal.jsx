@@ -2,7 +2,7 @@
 import { toast } from 'react-toastify';
 
 const DeleteJobModal = ({ deleteJob, setNumber, number }) => {
-    console.log(deleteJob);
+    // console.log(deleteJob);
     const { jobTitle, companyName, positionName, skills, description, vacancy, _id } = deleteJob;
 
 

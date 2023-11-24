@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 const DeleteSocializationsModal = ({ deletePost, setNumber, number }) => {
-    console.log(deletePost);
+    // console.log(deletePost);
     const [formattedDate, setFormattedDate] = useState('');
     const { title, quantity, category, location, description, createdAt, _id } = deletePost;
 

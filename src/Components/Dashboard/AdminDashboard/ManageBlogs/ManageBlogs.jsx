@@ -4,10 +4,12 @@ import ManageBlogsRow from "./ManageBlogsRow";
 import DeleteBlogsModal from "./Modals/DeleteBlogsModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import UpdateBlogsModal from "./Modals/UpdateBlogsModal";
 
 const ManageBlogs = () => {
   const [number, setNumber] = useState(0);
   const [blogs, setBlogs] = useState(null);
+  const [updateBlog, setUpdateBlog] = useState(null);
   const [deleteBlog, setDeleteBlog] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const [allBlogs, setAllBlogs] = useState(false);
@@ -55,7 +57,7 @@ const ManageBlogs = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+              console.log(data);
               if (data?.status === "Successful") {
                 toast.success("Blog Add Successfully");
                 reset();
@@ -66,6 +68,10 @@ const ManageBlogs = () => {
             });
         }
       });
+  };
+
+  const closeModal = () => {
+    window.location.reload();
   };
 
   return (
@@ -116,6 +122,7 @@ const ManageBlogs = () => {
                     key={blog?._id}
                     blog={blog}
                     index={index}
+                    setUpdateBlog={setUpdateBlog}
                     setDeleteBlog={setDeleteBlog}
                   ></ManageBlogsRow>
                 ))
@@ -126,6 +133,7 @@ const ManageBlogs = () => {
                       key={blog?._id}
                       blog={blog}
                       index={index}
+                      setUpdateBlog={setUpdateBlog}
                       setDeleteBlog={setDeleteBlog}
                     ></ManageBlogsRow>
                   ))}
@@ -143,6 +151,13 @@ const ManageBlogs = () => {
             </div>
           )}
         </div>
+        {updateBlog && (
+          <UpdateBlogsModal
+          updateBlog={updateBlog}
+            setNumber={setNumber}
+            number={number}
+          ></UpdateBlogsModal>
+        )}
         {deleteBlog && (
           <DeleteBlogsModal
             deleteBlog={deleteBlog}
@@ -160,6 +175,7 @@ const ManageBlogs = () => {
           <label
             for="addBlog"
             class="btn btn-sm btn-circle absolute right-2 top-2"
+            onClick={closeModal}
           >
             ✕
           </label>

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FaPen, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
-const ManageBlogsRow = ({ blog, index, setDeleteBlog }) => {
+const ManageBlogsRow = ({ blog, index, setDeleteBlog, setUpdateBlog }) => {
 
     const { title, banner, category, author, description, _id } = blog;
     const { register, handleSubmit, reset } = useForm();
@@ -118,74 +118,11 @@ const ManageBlogsRow = ({ blog, index, setDeleteBlog }) => {
             </td>
             <td className="w-full lg:w-auto text-xs text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <div className="flex justify-center pb-1 items-center gap-2">
-                    <label htmlFor="update-blog-modal" className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaPen className='text-green-700' /></label>
+                    <label htmlFor="update-blog-modal" onClick={() => setUpdateBlog(blog)} className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaPen className='text-green-700' /></label>
                     <label htmlFor="delete-blog-modal" onClick={() => setDeleteBlog(blog)} className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaTrash className='text-red-700' /></label>
                 </div>
 
             </td>
-
-            {/* <!-- The Update Blog modal --> */}
-
-            <input type="checkbox" id="update-blog-modal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative  bg-slate-300">
-                    <label
-                        for="update-blog-modal"
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
-                    >
-                        ✕
-                    </label>
-                    <h3 class="text-lg font-bold">Please Update Blog Information</h3>
-                    <form
-                        onSubmit={handleSubmit(handleUpdateBlog)}
-                        action=""
-                        className="py-3"
-                    >
-                        <input
-                            {...register("title")}
-                            defaultValue={blog?.title}
-                            type="text"
-                            placeholder="Enter Blog Title"
-                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-                        />
-                        <input
-                            {...register("category")}
-                            defaultValue={blog?.category}
-                            type="text"
-                            placeholder="Enter Blog Category"
-                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-                        />
-                        <input
-                            {...register("author")}
-                            defaultValue={blog?.author}
-                            type="text"
-                            placeholder="Enter Blog Author"
-                            className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-                        />
-                        <textarea
-                            {...register("description")}
-                            defaultValue={blog?.description}
-                            type="text"
-                            placeholder="Enter Blog Description"
-                            className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
-                        />
-                        <div className="flex justify-between items-center gap-3">
-                            <input
-                                {...register("photoURL")}
-                                type="file"
-                                placeholder="Enter Your Image"
-                                className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block"
-                            />
-                            <img src={blog?.banner} alt="" className="w-16 h-16" />
-                        </div>
-                        <input
-                            className="btn px-7 btn-primary mt-5 block mx-auto"
-                            type="submit"
-                            value="Update Blog"
-                        />
-                    </form>
-                </div>
-            </div>
         </tr>
     );
 };

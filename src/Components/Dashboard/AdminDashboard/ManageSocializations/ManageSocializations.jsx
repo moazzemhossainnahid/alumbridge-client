@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 
+import { toast } from "react-toastify";
 import ManageSocializationsRow from "./ManageSocializationsRow";
 import DeleteSocializationsModal from "./Modals/DeleteSocializationsModal";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import UpdateSocializationsModal from "./Modals/UpdateSocializationsModal";
 
 const ManageSocializations = () => {
   const [number, setNumber] = useState(0);
   const [socializations, setSocializations] = useState(null);
+  const [updatePost, setUpdatePost] = useState(null);
   const [deletePost, setDeletePost] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const [allSocializations, setAllSocializations] = useState(false);
   const [selectType, setSelectType] = useState();
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
@@ -109,6 +112,7 @@ const ManageSocializations = () => {
                     key={post?._id}
                     post={post}
                     index={index}
+                    setUpdatePost={setUpdatePost}
                     setDeletePost={setDeletePost}
                   ></ManageSocializationsRow>
                 ))
@@ -119,6 +123,8 @@ const ManageSocializations = () => {
                       key={post?._id}
                       post={post}
                       index={index}
+                      setLoading={setLoading}
+                      setUpdatePost={setUpdatePost}
                       setDeletePost={setDeletePost}
                     ></ManageSocializationsRow>
                   ))}
@@ -136,9 +142,16 @@ const ManageSocializations = () => {
             </div>
           )}
         </div>
+        {updatePost && (
+          <UpdateSocializationsModal
+            updatePost={updatePost}
+            setNumber={setNumber}
+            number={number}
+          ></UpdateSocializationsModal>
+        )}
         {deletePost && (
           <DeleteSocializationsModal
-          deletePost={deletePost}
+            deletePost={deletePost}
             setNumber={setNumber}
             number={number}
           ></DeleteSocializationsModal>

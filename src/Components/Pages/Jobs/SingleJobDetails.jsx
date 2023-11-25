@@ -28,6 +28,10 @@ const SingleJobDetails = () => {
         email: data.email,
         address: data.address,
         message: data.message,
+        jobTitle: job?.jobTitle,
+        jobPosition: job?.positionName,
+        jobEmail: job?.email,
+        companyName: job?.companyName,
       };
 
   console.log(application);
@@ -123,30 +127,35 @@ const SingleJobDetails = () => {
             <input
               {...register("name")}
               type="text"
+              required
               placeholder="Enter Your Name"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <input
               {...register("phone")}
               type="text"
+              required
               placeholder="Enter Your Phone"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <input
               {...register("email")}
               type="email"
+              required
               placeholder="Enter Your Email"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
             <textarea
               {...register("address")}
               type="text"
+              required
               placeholder="Enter Your Address"
               className="input bg-slate-100 resize-none my-2 input-ghost w-full h-16 block mx-auto max-w-xs"
             />
             <textarea
               {...register("message")}
               type="text"
+              required
               placeholder="Enter About Application"
               className="input bg-slate-100 my-2 input-ghost w-full h-24 block mx-auto max-w-xs"
             />

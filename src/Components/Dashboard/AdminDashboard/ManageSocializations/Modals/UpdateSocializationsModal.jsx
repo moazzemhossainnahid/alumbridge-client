@@ -65,6 +65,7 @@ const UpdateSocializationsModal = ({ updatePost, setNumber, number }) => {
                                 {...register("title")}
                                 defaultValue={title}
                                 type="text"
+                                required
                                 placeholder="Enter Post Title"
                                 className="input bg-slate-200 my-2 input-ghost w-full block mx-auto"
                             />
@@ -72,6 +73,7 @@ const UpdateSocializationsModal = ({ updatePost, setNumber, number }) => {
                                 {...register("quantity")}
                                 defaultValue={quantity}
                                 type="number"
+                                required
                                 placeholder={`${(category === "Blood" && "How Many Bags Needed") || (category === "Volunteer" && "How Many Persons Needed")}`}
                                 className="input bg-slate-200 my-2 input-ghost w-full block mx-auto"
                             />
@@ -79,6 +81,7 @@ const UpdateSocializationsModal = ({ updatePost, setNumber, number }) => {
                                 {...register("location")}
                                 defaultValue={location}
                                 type="text"
+                                required
                                 placeholder="Enter Where Needed (Location)"
                                 className="input bg-slate-200 my-2 input-ghost h-16 w-full block mx-auto"
                             />
@@ -86,6 +89,7 @@ const UpdateSocializationsModal = ({ updatePost, setNumber, number }) => {
                                 {...register("description")}
                                 defaultValue={description}
                                 type="text"
+                                required
                                 placeholder="Enter Description"
                                 className="input bg-slate-200 my-2 input-ghost w-full h-28 block mx-auto"
                             />

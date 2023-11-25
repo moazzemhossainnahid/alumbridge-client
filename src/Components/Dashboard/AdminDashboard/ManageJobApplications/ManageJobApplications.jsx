@@ -2,67 +2,20 @@ import React, { useEffect, useState } from "react";
 import ManageJobApplicationsRow from "./ManageJobApplicationsRow";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../../../firebase.init";
+import ViewJobApplicationsModal from "./Modals/ViewJobApplicationsModal";
 
 const ManageJobApplications = () => {
-  const [number, setNumber] = useState(0);
   const [applications, setApplications] = useState(null);
-  const [deleteStaf, setDeleteStaf] = useState(null);
-  const { register, handleSubmit, reset } = useForm();
-
-  const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
+  const [viewApplication, setViewApplication] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/jobapplications")
       .then((res) => res.json())
       .then((data) => setApplications(data?.data));
-  }, [number]);
+  }, []);
 
-  const handleAddStaf = async (data) => {
-    const image = data.photoURL[0];
-    const formData = new FormData();
-    formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=${imageUrlKey}`;
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.success) {
-          const img = result.data.url;
-          const staf = {
-            name: data.name,
-            age: data.age,
-            experience: data.experience,
-            work_name: data.work_name,
-            image: img,
-          };
-
-          // send to database
-          fetch(`http://localhost:5000/api/v1/stafs`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(staf),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-            //   console.log(data);
-              if (data?.status === "Successful") {
-                toast.success("Staf Add Successfully");
-                reset();
-                setNumber(number + 1);
-              } else {
-                toast.error("Faild to Add Staf");
-              }
-            });
-        }
-      });
-  };
-
-//   console.log(stafs);
 
   return (
     <div className=" text-left h-full w-full">
@@ -99,76 +52,19 @@ const ManageJobApplications = () => {
                 <ManageJobApplicationsRow
                   key={application?._id}
                   application={application}
+                  setViewApplication={setViewApplication}
                   index={index}
-                  setDeleteStaf={setDeleteStaf}
                 ></ManageJobApplicationsRow>
               ))}
             </tbody>
           </table>
         </div>
-        {deleteStaf && (
-          <DeleteStafsModal
-            deleteStaf={deleteStaf}
-            setNumber={setNumber}
-            number={number}
-          ></DeleteStafsModal>
-        )}
       </div>
-      {/* <!-- The add staf modal --> */}
-
-      <input type="checkbox" id="addStaf" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box relative  bg-slate-300">
-          <label
-            for="addStaf"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
-          >
-            ✕
-          </label>
-          <h3 class="text-lg font-bold">Please Add New Staf Information</h3>
-          <form
-            onSubmit={handleSubmit(handleAddStaf)}
-            action=""
-            className="py-3"
-          >
-            <input
-              {...register("name")}
-              type="text"
-              placeholder="Enter Staf Name"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
-            />
-            <input
-              {...register("age")}
-              type="number"
-              placeholder="Enter Stafs Age"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
-            />
-            <input
-              {...register("experience")}
-              type="text"
-              placeholder="Enter Staf Experience"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
-            />
-            <input
-              {...register("work_name")}
-              type="text"
-              placeholder="Enter Stafs Work"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
-            />
-            <input
-              {...register("photoURL")}
-              type="file"
-              placeholder="Enter Your Image"
-              className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block max-w-xs"
-            />
-            <input
-              className="btn px-7 btn-secondary my-5 block mx-auto"
-              type="submit"
-              value="Add Staf"
-            />
-          </form>
-        </div>
-      </div>
+      {viewApplication && (
+        <ViewJobApplicationsModal
+        application={viewApplication}
+        ></ViewJobApplicationsModal>
+      )}
     </div>
   );
 };

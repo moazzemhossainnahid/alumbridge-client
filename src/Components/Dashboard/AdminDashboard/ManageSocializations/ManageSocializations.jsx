@@ -5,6 +5,8 @@ import ManageSocializationsRow from "./ManageSocializationsRow";
 import DeleteSocializationsModal from "./Modals/DeleteSocializationsModal";
 import { useForm } from "react-hook-form";
 import UpdateSocializationsModal from "./Modals/UpdateSocializationsModal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../../../firebase.init";
 
 const ManageSocializations = () => {
   const [number, setNumber] = useState(0);
@@ -14,8 +16,7 @@ const ManageSocializations = () => {
   const { register, handleSubmit, reset } = useForm();
   const [allSocializations, setAllSocializations] = useState(false);
   const [selectType, setSelectType] = useState();
-  const [loading, setLoading] = useState(false);
-
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/socializations")
@@ -33,6 +34,7 @@ const ManageSocializations = () => {
       category: selectType,
       quantity: data.quantity,
       location: data.location,
+      email: user?.email,
       description: data.description,
     };
 
@@ -123,7 +125,6 @@ const ManageSocializations = () => {
                       key={post?._id}
                       post={post}
                       index={index}
-                      setLoading={setLoading}
                       setUpdatePost={setUpdatePost}
                       setDeletePost={setDeletePost}
                     ></ManageSocializationsRow>
@@ -191,24 +192,28 @@ const ManageSocializations = () => {
             <input
               {...register("title")}
               type="text"
+              required
               placeholder="Enter Post Title"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("quantity")}
               type="number"
+              required
               placeholder={`${(selectType === "Blood" && "How Many Bags Needed") || (selectType === "Volunteer" && "How Many Persons Needed")}`}
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <textarea
               {...register("location")}
               type="text"
+              required
               placeholder="Enter Where Needed (Location)"
               className="input bg-slate-100 my-2 input-ghost h-16 w-full block mx-auto"
             />
             <textarea
               {...register("description")}
               type="text"
+              required
               placeholder="Enter Description"
               className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
             />

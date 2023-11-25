@@ -66,6 +66,7 @@ const UpdateJobModal = ({ updateJob, setNumber, number }) => {
                                     {...register("companyName")}
                                     defaultValue={companyName}
                                     type="text"
+                                    required
                                     placeholder="Enter Company Name"
                                     className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
                                 />
@@ -73,6 +74,7 @@ const UpdateJobModal = ({ updateJob, setNumber, number }) => {
                                     {...register("positionName")}
                                     defaultValue={positionName}
                                     type="text"
+                                    required
                                     placeholder="Enter Job Position"
                                     className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
                                 />
@@ -81,6 +83,7 @@ const UpdateJobModal = ({ updateJob, setNumber, number }) => {
                                 {...register("skills")}
                                 defaultValue={skills}
                                 type="text"
+                                required
                                 placeholder="Enter Job Skills"
                                 className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
                             />
@@ -88,6 +91,7 @@ const UpdateJobModal = ({ updateJob, setNumber, number }) => {
                                 {...register("vacancy")}
                                 defaultValue={vacancy}
                                 type="number"
+                                required
                                 placeholder="Enter Job Vacancy"
                                 className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
                             />
@@ -95,6 +99,7 @@ const UpdateJobModal = ({ updateJob, setNumber, number }) => {
                                 {...register("description")}
                                 defaultValue={description}
                                 type="text"
+                                required
                                 placeholder="Enter Blog Description"
                                 className="input bg-slate-100 my-2 input-ghost w-full h-20 block mx-auto"
                             />

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FaEye, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2'
-const ManageJobApplicationsRow = ({ application, index, setDeleteStaf }) => {
+const ManageJobApplicationsRow = ({ application, index, setViewApplication }) => {
 
-    const { name, phone, address, email, message, _id } = application;
+    const { name, phone, address, email, message, _id, jobTitle, jobPosition, jobEmail, companyName } = application;
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -44,6 +44,9 @@ const ManageJobApplicationsRow = ({ application, index, setDeleteStaf }) => {
 
     }
 
+    const closeModal = () => {
+        window.location.reload();
+    };
 
 
     return (
@@ -66,32 +69,11 @@ const ManageJobApplicationsRow = ({ application, index, setDeleteStaf }) => {
             </td>
             <td className="w-full lg:w-auto text-xs p-2 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <div className="flex justify-between px-3 pb-1 gap-2 items-center">
-                    <label htmlFor="view-application-modal" className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaEye className='text-green-700' /></label>
+                    <label onClick={() => setViewApplication(application)} htmlFor="view-jobapplication-modal" className=" text-black rounded shadow px-2 py-1 cursor-pointer text-xs bg-danger "><FaEye className='text-green-700' /></label>
                     <label onClick={() => handleDelete(_id)} className="btn text-white bg-white btn-xs"><FaTrash className='text-red-700' /></label>
                 </div>
             </td>
 
-            {/* <!-- The View Application modal --> */}
-
-            <input type="checkbox" id="view-application-modal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative  bg-slate-300">
-                    <label
-                        for="view-application-modal"
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
-                    >
-                        ✕
-                    </label>
-                    <h3 class="text-lg font-bold">Application Information</h3>
-                    <div className="py-7 space-y-3">
-                        <h3 className="text-2xl font-bold">{name}</h3>
-                        <h3 className="text-xl font-semibold">{phone}</h3>
-                        <h3 className="text-md font-semibold">{email}</h3>
-                        <h3 className="text-md font-normal">{address}</h3>
-                        <h3 className="text-md font-normal">{message}</h3>
-                    </div>
-                </div>
-            </div>
         </tr>
     );
 };

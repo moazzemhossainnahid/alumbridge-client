@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const UpdateBlogsModal = ({ updateBlog, setNumber, number }) => {
+const UpdateBlogsModal = ({ updateBlog }) => {
     const { title, banner, category, author, description, _id } = updateBlog;
 
     const { register, handleSubmit, reset } = useForm();
@@ -28,7 +28,6 @@ const UpdateBlogsModal = ({ updateBlog, setNumber, number }) => {
                         const blog = {
                             title: data.title,
                             category: data.category,
-                            author: data.author,
                             description: data.description,
                             banner: img,
                         };
@@ -61,7 +60,6 @@ const UpdateBlogsModal = ({ updateBlog, setNumber, number }) => {
             const blog = {
                 title: data.title,
                 category: data.category,
-                author: data.author,
                 description: data.description,
                 banner: banner,
             };
@@ -111,6 +109,7 @@ const UpdateBlogsModal = ({ updateBlog, setNumber, number }) => {
                                 {...register("title")}
                                 defaultValue={title}
                                 type="text"
+                                required
                                 placeholder="Enter Blog Title"
                                 className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
                             />
@@ -118,20 +117,15 @@ const UpdateBlogsModal = ({ updateBlog, setNumber, number }) => {
                                 {...register("category")}
                                 defaultValue={category}
                                 type="text"
+                                required
                                 placeholder="Enter Blog Category"
-                                className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-                            />
-                            <input
-                                {...register("author")}
-                                defaultValue={author}
-                                type="text"
-                                placeholder="Enter Blog Author"
                                 className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
                             />
                             <textarea
                                 {...register("description")}
                                 defaultValue={description}
                                 type="text"
+                                required
                                 placeholder="Enter Blog Description"
                                 className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
                             />
@@ -139,6 +133,7 @@ const UpdateBlogsModal = ({ updateBlog, setNumber, number }) => {
                                 <input
                                     {...register("photoURL")}
                                     type="file"
+                                    required
                                     placeholder="Enter Your Image"
                                     className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block"
                                 />

@@ -130,7 +130,7 @@ const SingleBlogDetails = () => {
                       <div className="text-start">
                         <div className="flex items-center gap-2">
                           <h4 className="text-md font-bold">{data?.name}</h4>
-                          {(user?.email === data?.email) && <FaTrash onClick={() => handleDeleteComment(data)} className="text-xs cursor-pointer hover:text-red-700 hover:scale-105 duration-300" />}
+                          {((user?.email === data?.email) || (user?.email === blog?.email)) && <FaTrash onClick={() => handleDeleteComment(data)} className="text-xs cursor-pointer hover:text-red-700 hover:scale-105 duration-300" />}
                         </div>
                         <h4 className="text-sm font-normal pl-2">{data?.comment}</h4>
                       </div>

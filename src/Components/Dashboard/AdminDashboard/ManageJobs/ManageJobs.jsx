@@ -4,6 +4,8 @@ import ManageJobsRow from "./ManageJobsRow";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import UpdateJobModal from "./Modals/UpdateJobModal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../../../firebase.init";
 
 const ManageJobs = () => {
   const [number, setNumber] = useState(0);
@@ -12,6 +14,7 @@ const ManageJobs = () => {
   const [deleteJob, setDeleteJob] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const [allJobs, setAllJobs] = useState(false);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/jobs")
@@ -28,6 +31,7 @@ const ManageJobs = () => {
       positionName: data.positionName,
       vacancy: data.vacancy,
       skills: data.skills,
+      email: user?.email,
       description: data.description,
     };
 
@@ -163,6 +167,7 @@ const ManageJobs = () => {
             <input
               {...register("jobTitle")}
               type="text"
+              required
               placeholder="Enter Job Title"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
@@ -171,12 +176,14 @@ const ManageJobs = () => {
               <input
                 {...register("companyName")}
                 type="text"
+                required
                 placeholder="Enter Company Name"
                 className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
               />
               <input
                 {...register("positionName")}
                 type="text"
+                required
                 placeholder="Enter Position Name"
                 className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
               />
@@ -184,18 +191,21 @@ const ManageJobs = () => {
             <input
               {...register("vacancy")}
               type="number"
+              required
               placeholder="Enter Job Vacancy"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("skills")}
               type="text"
+              required
               placeholder="Enter Job skills"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <textarea
               {...register("description")}
               type="text"
+              required
               placeholder="Enter Job Description"
               className="input bg-slate-100 my-2 input-ghost w-full h-20 block mx-auto"
             />

@@ -5,6 +5,8 @@ import DeleteBlogsModal from "./Modals/DeleteBlogsModal";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import UpdateBlogsModal from "./Modals/UpdateBlogsModal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../../../firebase.init";
 
 const ManageBlogs = () => {
   const [number, setNumber] = useState(0);
@@ -13,6 +15,7 @@ const ManageBlogs = () => {
   const [deleteBlog, setDeleteBlog] = useState(null);
   const { register, handleSubmit, reset } = useForm();
   const [allBlogs, setAllBlogs] = useState(false);
+  const [user] = useAuthState(auth);
 
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
@@ -22,10 +25,10 @@ const ManageBlogs = () => {
       .then((data) => setBlogs(data?.data));
   }, [number]);
 
-  console.log(blogs);
+  // console.log(blogs);
 
 
-  const handleAddService = async (data) => {
+  const handleAddBlog = async (data) => {
     const image = data.photoURL[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -41,7 +44,8 @@ const ManageBlogs = () => {
           const blog = {
             title: data.title,
             category: data.category,
-            author: data.author,
+            author: user?.displayName,
+            email: user?.email,
             description: data.description,
             banner: img,
           };
@@ -181,37 +185,35 @@ const ManageBlogs = () => {
           </label>
           <h3 class="text-lg font-bold">Please Add New Blog Information</h3>
           <form
-            onSubmit={handleSubmit(handleAddService)}
+            onSubmit={handleSubmit(handleAddBlog)}
             action=""
             className="py-3"
           >
             <input
               {...register("title")}
               type="text"
+              required
               placeholder="Enter Blog Title"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <input
               {...register("category")}
               type="text"
+              required
               placeholder="Enter Blog Category"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
-            />
-            <input
-              {...register("author")}
-              type="text"
-              placeholder="Enter Blog Author"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto"
             />
             <textarea
               {...register("description")}
               type="text"
+              required
               placeholder="Enter Blog Description"
               className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto"
             />
             <input
               {...register("photoURL")}
               type="file"
+              required
               placeholder="Enter Your Image"
               className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block"
             />

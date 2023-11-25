@@ -4,7 +4,7 @@ const useSocializations = () => {
     const [socializations, setSocializations] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/socializations`, {
+        fetch(`https://alumbridge-server.vercel.app/api/v1/socializations`, {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

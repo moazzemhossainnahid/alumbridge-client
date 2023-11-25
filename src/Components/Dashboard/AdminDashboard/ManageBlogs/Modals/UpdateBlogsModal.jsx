@@ -35,7 +35,7 @@ const UpdateBlogsModal = ({ updateBlog }) => {
                         console.log(blog);
 
                         // send to database
-                        fetch(`http://localhost:5000/api/v1/blogs/${_id}`, {
+                        fetch(`https://alumbridge-server.vercel.app/api/v1/blogs/${_id}`, {
                             method: "PATCH",
                             headers: {
                                 "content-type": "application/json",
@@ -67,7 +67,7 @@ const UpdateBlogsModal = ({ updateBlog }) => {
             console.log(blog);
 
             // send to database
-            fetch(`http://localhost:5000/api/v1/blogs/${_id}`, {
+            fetch(`https://alumbridge-server.vercel.app/api/v1/blogs/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",

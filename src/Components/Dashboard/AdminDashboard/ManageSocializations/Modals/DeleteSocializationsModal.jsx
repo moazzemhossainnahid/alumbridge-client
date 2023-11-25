@@ -17,7 +17,7 @@ const DeleteSocializationsModal = ({ deletePost, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/api/v1/socializations/${id}`;
+        const url = `https://alumbridge-server.vercel.app/api/v1/socializations/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

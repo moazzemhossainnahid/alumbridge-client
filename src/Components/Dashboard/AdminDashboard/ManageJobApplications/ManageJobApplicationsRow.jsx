@@ -16,7 +16,7 @@ const ManageJobApplicationsRow = ({ application, index, setViewApplication }) =>
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = `http://localhost:5000/api/v1/jobapplications/${id}`;
+                const url = `https://alumbridge-server.vercel.app/api/v1/jobapplications/${id}`;
                 fetch(url, {
                     method: 'DELETE',
                     headers: {

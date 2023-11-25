@@ -40,7 +40,7 @@ const SingleSocializationDetails = () => {
     }
 
     // send to database
-    fetch(`http://localhost:5000/api/v1/socializations/${id}/comments`, {
+    fetch(`https://alumbridge-server.vercel.app/api/v1/socializations/${id}/comments`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -64,7 +64,7 @@ const SingleSocializationDetails = () => {
 
 
   const handleDeleteComment = (data) => {
-    const url = `http://localhost:5000/api/v1/socializations/${socialization?._id}/comments/${data?._id}`;
+    const url = `https://alumbridge-server.vercel.app/api/v1/socializations/${socialization?._id}/comments/${data?._id}`;
     // console.log(url);
     fetch(url, {
       method: 'DELETE',

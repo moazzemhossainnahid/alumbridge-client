@@ -17,7 +17,7 @@ const ManageJobs = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/jobs")
+    fetch("https://alumbridge-server.vercel.app/api/v1/jobs")
       .then((res) => res.json())
       .then((data) => setJobs(data?.data));
   }, [number]);
@@ -36,7 +36,7 @@ const ManageJobs = () => {
     };
 
     // send to database
-    fetch(`http://localhost:5000/api/v1/jobs`, {
+    fetch(`https://alumbridge-server.vercel.app/api/v1/jobs`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

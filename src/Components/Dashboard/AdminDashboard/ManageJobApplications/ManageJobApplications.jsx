@@ -12,7 +12,7 @@ const ManageJobApplications = () => {
   const[user] = useAuthState(auth)
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/jobapplications")
+    fetch("https://alumbridge-server.vercel.app/api/v1/jobapplications")
       .then((res) => res.json())
       .then((data) => setApplications(data?.data));
   }, []);

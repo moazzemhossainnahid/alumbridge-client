@@ -19,7 +19,7 @@ const ManageSocializations = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/socializations")
+    fetch("https://alumbridge-server.vercel.app/api/v1/socializations")
       .then((res) => res.json())
       .then((data) => setSocializations(data?.data));
   }, [number]);
@@ -39,7 +39,7 @@ const ManageSocializations = () => {
     };
 
     // send to database
-    fetch(`http://localhost:5000/api/v1/socializations`, {
+    fetch(`https://alumbridge-server.vercel.app/api/v1/socializations`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -9,6 +9,7 @@ import ViewJobApplicationsModal from "./Modals/ViewJobApplicationsModal";
 const ManageJobApplications = () => {
   const [applications, setApplications] = useState(null);
   const [viewApplication, setViewApplication] = useState(null);
+  const[user] = useAuthState(auth)
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/jobapplications")
@@ -16,13 +17,14 @@ const ManageJobApplications = () => {
       .then((data) => setApplications(data?.data));
   }, []);
 
+  const applicationFilter = applications && applications?.result?.filter(app => app?.email === user?.email);
 
   return (
     <div className=" text-left h-full w-full">
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Job Applications: {applications?.result?.length}
+            Total Job Applications: {applicationFilter?.length}
           </p>
           <table className="border-collapse w-full bg-slate-200">
             {/* <!-- head --> */}
@@ -48,7 +50,7 @@ const ManageJobApplications = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {applications?.result?.map((application, index) => (
+              {applicationFilter?.map((application, index) => (
                 <ManageJobApplicationsRow
                   key={application?._id}
                   application={application}

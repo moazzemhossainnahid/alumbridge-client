@@ -57,12 +57,15 @@ const ManageJobs = () => {
       });
   };
 
+  const jobsFilter = jobs && jobs?.result?.filter(job => job?.email === user?.email);
+
+
   return (
     <div className=" text-left h-full w-full">
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Jobs: {jobs?.totalJobs}
+            Total Jobs: {jobsFilter?.length}
           </p>
           <div className="pb-5">
             <label
@@ -97,7 +100,7 @@ const ManageJobs = () => {
               {/* <!-- row 1 --> */}
 
               {allJobs
-                ? jobs?.result?.map((job, index) => (
+                ? jobsFilter?.map((job, index) => (
                   <ManageJobsRow
                     key={job?._id}
                     job={job}
@@ -106,7 +109,7 @@ const ManageJobs = () => {
                     setDeleteJob={setDeleteJob}
                   ></ManageJobsRow>
                 ))
-                : jobs?.result
+                : jobsFilter
                   ?.slice(0, 7)
                   ?.map((job, index) => (
                     <ManageJobsRow
@@ -119,7 +122,7 @@ const ManageJobs = () => {
                   ))}
             </tbody>
           </table>
-          {jobs?.result?.length > 7 && (
+          {jobsFilter?.length > 7 && (
             <div className="pt-7">
               <button
                 onClick={() => setAllJobs(!allJobs)}
@@ -133,7 +136,7 @@ const ManageJobs = () => {
         </div>
         {updateJob && (
           <UpdateJobModal
-          updateJob={updateJob}
+            updateJob={updateJob}
             setNumber={setNumber}
             number={number}
           ></UpdateJobModal>

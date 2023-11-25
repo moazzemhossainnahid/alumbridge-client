@@ -67,6 +67,7 @@ const ManageSocializations = () => {
     setSelectType(type);
   };
 
+  const socializationsFilter = socializations && socializations?.result?.filter(s => s?.email === user?.email);
 
 
   return (
@@ -74,7 +75,7 @@ const ManageSocializations = () => {
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Socialization Posts: {socializations?.totalPosts}
+            Total Socialization Posts: {socializationsFilter?.length}
           </p>
           <div className="pb-5">
             <label
@@ -109,7 +110,7 @@ const ManageSocializations = () => {
               {/* <!-- row 1 --> */}
 
               {allSocializations
-                ? socializations?.result?.map((post, index) => (
+                ? socializationsFilter?.map((post, index) => (
                   <ManageSocializationsRow
                     key={post?._id}
                     post={post}
@@ -118,7 +119,7 @@ const ManageSocializations = () => {
                     setDeletePost={setDeletePost}
                   ></ManageSocializationsRow>
                 ))
-                : socializations?.result
+                : socializationsFilter
                   ?.slice(0, 7)
                   ?.map((post, index) => (
                     <ManageSocializationsRow
@@ -131,7 +132,7 @@ const ManageSocializations = () => {
                   ))}
             </tbody>
           </table>
-          {socializations?.result?.length > 7 && (
+          {socializationsFilter?.length > 7 && (
             <div className="pt-7">
               <button
                 onClick={() => setAllSocializations(!allSocializations)}

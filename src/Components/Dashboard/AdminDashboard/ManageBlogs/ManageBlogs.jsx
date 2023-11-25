@@ -78,12 +78,16 @@ const ManageBlogs = () => {
     window.location.reload();
   };
 
+
+  const blogsFilter = blogs && blogs?.result?.filter(blog => blog?.email === user?.email);
+
+
   return (
     <div className=" text-left h-full w-full">
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Blogs: {blogs?.totalBlogs}
+            Total Blogs: {blogsFilter?.length}
           </p>
           <div className="pb-5">
             <label
@@ -121,7 +125,7 @@ const ManageBlogs = () => {
               {/* <!-- row 1 --> */}
 
               {allBlogs
-                ? blogs?.result?.map((blog, index) => (
+                ? blogsFilter?.map((blog, index) => (
                   <ManageBlogsRow
                     key={blog?._id}
                     blog={blog}
@@ -130,7 +134,7 @@ const ManageBlogs = () => {
                     setDeleteBlog={setDeleteBlog}
                   ></ManageBlogsRow>
                 ))
-                : blogs?.result
+                : blogsFilter
                   ?.slice(0, 7)
                   ?.map((blog, index) => (
                     <ManageBlogsRow
@@ -143,7 +147,7 @@ const ManageBlogs = () => {
                   ))}
             </tbody>
           </table>
-          {blogs?.result?.length > 7 && (
+          {blogsFilter?.length > 7 && (
             <div className="pt-7">
               <button
                 onClick={() => setAllBlogs(!allBlogs)}

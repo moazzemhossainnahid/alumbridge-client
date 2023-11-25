@@ -9,7 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../../../../../firebase.init";
 
 const DBCards = () => {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ const DBCards = () => {
   const [socializations, setSocializations] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [jobApplications, setJobApplications] = useState([]);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/users`, {
@@ -75,6 +78,12 @@ const DBCards = () => {
   }, []);
 
 
+  const blogsFilter = blogs && blogs?.filter(blog => blog?.email === user?.email);
+  const jobsFilter = jobs && jobs?.filter(job => job?.email === user?.email);
+  const socializationsFilter = socializations && socializations?.filter(s => s?.email === user?.email);
+  const jobApplicationsFilter = jobApplications && jobApplications?.filter(ja => ja?.email === user?.email);
+
+
   return (
     <div className="">
       <div className="grid md:grid-cols-2 gap-5 py-10 text-start">
@@ -109,7 +118,7 @@ const DBCards = () => {
           <div className="flex items-center justify-between bg-[#17A2BB] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {jobs?.length}
+                {jobsFilter?.length}
               </h3>
               <h3 className="text-md font-bold text-white">Total Job Posts</h3>
             </div>
@@ -135,7 +144,7 @@ const DBCards = () => {
           <div className="flex items-center justify-between bg-[#219422] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {blogs?.length}
+                {blogsFilter?.length}
               </h3>
               <h3 className="text-md font-bold text-white">Total Blog Posts</h3>
             </div>
@@ -162,7 +171,7 @@ const DBCards = () => {
           <div className="flex items-center justify-between bg-[#572194b9] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {socializations?.length}
+                {socializationsFilter?.length}
               </h3>
               <h3 className="text-md font-bold text-white">Total Socialization Posts</h3>
             </div>
@@ -189,7 +198,7 @@ const DBCards = () => {
           <div className="flex items-center justify-between bg-[#ad5530] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {jobApplications?.length}{" "}
+                {jobApplicationsFilter?.length}{" "}
               </h3>
               <h3 className="text-md font-bold text-white">Total Job Applications</h3>
             </div>

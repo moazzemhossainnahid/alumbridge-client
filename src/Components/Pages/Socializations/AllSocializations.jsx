@@ -5,7 +5,7 @@ import useSocializations from '../../../Hooks/useSocializations';
 const AllSocializations = () => {
     const [socializations] = useSocializations();
 
-    console.log(socializations);
+    // console.log(socializations);
     return (
         <div className="w-full h-full py-20">
         <h1 className="text-3xl md:text-5xl pb-10 font-semibold leading-10 text-gray-800 text-center">

@@ -19,7 +19,7 @@ const UseAdmin = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             setAdmin(data?.role === true);
             setAdminLoading(false);
         })

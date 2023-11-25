@@ -5,6 +5,7 @@ import AboutUs from '../../Components/Pages/Home/AboutUs';
 import BlogsThree from '../../Components/Pages/Home/BlogsThree';
 import JobsThree from '../../Components/Pages/Home/JobsThree';
 import HomeTopCarousel from '../../Components/Pages/Home/HomeTopCarousel';
+import SocializationsThree from '../../Components/Pages/Home/SocializationsThree';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <HomeBanner/>
             <BlogsThree/>
             <JobsThree/>
+            <SocializationsThree/>
             <AboutUs/>
             <Newsletter/>
         </div>

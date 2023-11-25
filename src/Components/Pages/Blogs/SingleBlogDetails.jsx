@@ -29,7 +29,7 @@ const SingleBlogDetails = () => {
   const handleAddComment = async (c) => {
     const data = {
       name: user?.displayName,
-      photoURL: user?.photoURL,
+      photoURL: user?.photoURL ? user?.photoURL : "https://www.shareicon.net/data/2016/05/26/771188_man_512x512.png",
       email: user?.email,
       comment: c?.comment
     };
@@ -120,7 +120,7 @@ const SingleBlogDetails = () => {
             <div className="w-full p-5 py-16">
               <h3 className="text-start text-xl font-bold">Comments:</h3>
 
-              {blog?.comments && (
+              {blog?.comments && blog?.comments?.length > 0 ?
                 <div className="w-full md:w-5/6 p-5 grid grid-cols-1 gap-5 justify-center items-center">
                   {blog?.comments?.map((data) => (
                     <div key={data?._id} className="flex justify-start items-center gap-5 relative">
@@ -136,8 +136,11 @@ const SingleBlogDetails = () => {
                       </div>
                     </div>
                   ))}
+                </div> :
+                <div className="text-start py-5">
+                  <h3 className="text-red-600 textmd md:text-xl font-semibold">"There Are No Comments On This Post Yet"</h3>
                 </div>
-              )}
+              }
 
               <div className="py-5 flex justify-start">
                 <label

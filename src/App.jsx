@@ -21,11 +21,11 @@ import ManageBlogs from './Components/Dashboard/AdminDashboard/ManageBlogs/Manag
 import AboutUS from './Pages/AboutUS/AboutUS'
 import ContactUS from './Pages/ContactUS/ContactUS'
 import Profile from './Components/Dashboard/UserDashboard/Profile/Profile'
-import Signup from './Pages/Auth/Signup/Signup'
 import Signin from './Pages/Auth/Signin/Signin'
 import Socializations from './Pages/Socializations/Socializations'
 import ManageSocializations from './Components/Dashboard/AdminDashboard/ManageSocializations/ManageSocializations'
 import SingleSocializationDetails from './Components/Pages/Socializations/SingleSocializationDetails'
+import Signup from './Pages/Auth/Signup/Signup'
 
 function App() {
 
@@ -52,7 +52,7 @@ function App() {
 
 
             {/* Control Panel Routes */}
-            <Route path="/cpanel" element={<RequireAuth><CPanel /></RequireAuth>}>
+            <Route path="/cpanel" element={<RequireAuth><RequireAdmin><CPanel /></RequireAdmin></RequireAuth>}>
               <Route index element={<AdDashboard />} />
               <Route path="addashboard" element={<AdDashboard />} />
               <Route path="musers" element={<ManageUsers />} />

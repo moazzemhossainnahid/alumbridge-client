@@ -11,7 +11,7 @@ const Signup = () => {
     const [createUserWithEmailAndPassword, cuser, cloading, cerror] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile] = useUpdateProfile(auth);
     const { register, handleSubmit, reset } = useForm();
-    const [selectType, setSelectType] = useState();
+    const [roleType, setRoleType] = useState();
     const navigate = useNavigate();
 
     let signupError;
@@ -33,7 +33,7 @@ const Signup = () => {
         const displayName = data.name;
         const email = data.email;
         const password = data.password;
-        const accType = selectType;
+        const role = roleType;
         await createUserWithEmailAndPassword(email, password)
         verifyEmail()
         await updateProfile({ displayName: displayName })
@@ -42,7 +42,7 @@ const Signup = () => {
                     fetch(`http://localhost:5000/api/v1/users/${email}`, {
                         method: 'PUT',
                         headers: { 'content-type': 'application/json' },
-                        body: JSON.stringify({ email, displayName, accType })
+                        body: JSON.stringify({ email, displayName, role })
                     })
                         .then(res => res.json())
                         .then(data => {
@@ -70,7 +70,7 @@ const Signup = () => {
     const handleType = (e) => {
         const type = e.target.value;
 
-        setSelectType(type);
+        setRoleType(type);
     };
 
 
@@ -111,8 +111,8 @@ const Signup = () => {
                                     <option disabled selected>
                                         Select Type
                                     </option>
-                                    <option value="Alumni">Alumni</option>
-                                    <option value="Student">Student</option>
+                                    <option value="alumni">Alumni</option>
+                                    <option value="student">Student</option>
                                 </select>
 
                             </div>

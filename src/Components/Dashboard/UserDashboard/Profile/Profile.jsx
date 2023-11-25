@@ -12,7 +12,7 @@ const Profile = () => {
     const [profile] = useProfile();
 
     const imageUrlKey = 'e738f1d16de6b265746b7f82cc157644';
- 
+
     // handle Update Profile 
 
     const handleUpdateProfile = async (data) => {
@@ -64,7 +64,7 @@ const Profile = () => {
 
     }
 
-    console.log(profile);
+    // console.log(profile);
 
     return (
         <section className='bg-gradient-to-l from-secondary to-accent h-full w-full'>
@@ -107,12 +107,8 @@ const Profile = () => {
                                     <input disabled id="email" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="email" value={user?.email} />
                                 </div>
                                 <div className="pb-4">
-                                    <label for="accType" className="font-semibold text-gray-700 block pb-1">Account Type</label>
-                                    <input disabled id="accType" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="text" value={profile?.accType} />
-                                </div>
-                                <div className="pb-4">
                                     <label for="role" className="font-semibold text-gray-700 block pb-1">Role</label>
-                                    <input disabled id="role" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="tel" value={profile?.role ? profile?.role : "user"} />
+                                    <input disabled id="role" className="border-1 text-gray-500 rounded-r px-4 py-2 w-full" type="tel" value={profile?.role ? profile?.role : "student"} />
                                     <span className="text-gray-600 pt-4 block opacity-70">Personal login information of your account</span>
                                 </div>
                             </div>

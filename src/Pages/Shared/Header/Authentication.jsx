@@ -6,14 +6,12 @@ import { signOut } from 'firebase/auth';
 import auth from '../../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import UseAdmin from '../../../Hooks/useAdmin';
-import UseAlumni from '../../../Hooks/useAlumni';
 
 
 const Authentication = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const [admin] = UseAdmin();
-    const [alumni] = UseAlumni();
 
     const handleSignOut = async () => {
         await signOut(auth)
@@ -45,7 +43,7 @@ const Authentication = () => {
                     <ul tabIndex="0" className="mt-3 p-2 gap-1 shadow menu menu-compact dropdown-content text-gray-600 bg-slate-200 rounded-box w-52">
                         <li> <Link to="/profile" className="justify-between text-sm"> Profile <span className="badge">New</span> </Link> </li>
                         {
-                            (user && (admin || alumni)) && <li> <NavLink reloadDocument className={({ isActive }) => (isActive ? 'text-[#0f52ba] duration-300 border-b-2 border-[#0f52ba]' : 'text-gray-800 duration-100 text-sm')} to="/cpanel">Control Panel</NavLink></li>
+                            (user && admin) && <li> <NavLink reloadDocument className={({ isActive }) => (isActive ? 'text-[#0f52ba] duration-300 border-b-2 border-[#0f52ba]' : 'text-gray-800 duration-100 text-sm')} to="/cpanel">Control Panel</NavLink></li>
                         }
                         <li><Link className=' text-sm' to="/mypost">My Post</Link></li>
                         <li><button onClick={handleSignOut}>Sign Out</button></li>

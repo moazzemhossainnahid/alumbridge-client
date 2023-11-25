@@ -7,7 +7,7 @@ const JobsThree = () => {
   const [jobs] = useJobs();
   const navigate = useNavigate();
 
-  console.log(jobs);
+  // console.log(jobs);
   return (
     <div className="w-full">
       <div className="py-10">

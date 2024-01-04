@@ -12,7 +12,7 @@ const JobsThree = () => {
     <div className="w-full">
       <div className="py-10">
         <h3 className="text-xl md:text-2xl lg:text-4xl font-bold text-center font-display py-7">
-          Our top 3 Jobs
+          Our Top Job Posts
         </h3>
         <div className="w-[70px] mx-auto h-[3px] bg-[#1584f3] mb-10 relative ">
           <div className="radiant bg-[#FFFFFF]"></div>

@@ -17,12 +17,12 @@ const BlogsThree = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5 p5 md:px-10">
           {blogs &&
-            blogs?.slice(0,3)?.map((blog) => (
+            blogs?.slice(0, 3)?.map((blog) => (
               <AllBlogsGrid blog={blog} key={blog?._id} />
             ))}
         </div>
       </div>
-      <button onClick={() => navigate('/blogs')} className="btn btn-outline btn-danger">See More Blogs</button>
+      {blogs?.length > 3 && <button onClick={() => navigate('/blogs')} className="btn btn-outline btn-danger">See More Blogs</button>}
     </div>
   );
 };

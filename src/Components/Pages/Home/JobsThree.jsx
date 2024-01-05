@@ -19,12 +19,12 @@ const JobsThree = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5 p5 md:px-10">
           {jobs &&
-            jobs?.slice(0,3)?.map((job) => (
+            jobs?.slice(0, 3)?.map((job) => (
               <AllJobsGrid job={job} key={job?._id} />
             ))}
         </div>
       </div>
-      <button onClick={() => navigate('/jobs')} className="btn btn-outline btn-danger">See More Jobs</button>
+      {jobs?.length > 3 && <button onClick={() => navigate('/jobs')} className="btn btn-outline btn-danger">See More Jobs</button>}
     </div>
   );
 };
